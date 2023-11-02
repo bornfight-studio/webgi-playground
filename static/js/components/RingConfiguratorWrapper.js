@@ -1,9 +1,22 @@
 import RingConfigurator from "./RingConfigurator";
+import gsap from "gsap";
 
 export default class ModelConfiguratorWrapper {
     constructor() {
         this.DOM = {
+            // general
             body: "body",
+
+            // decorative
+            frame: {
+                topLeft: ".js-frame-top-left",
+                topRight: ".js-frame-top-right",
+                left: ".js-frame-left",
+                right: ".js-frame-right",
+                bottom: ".js-frame-bottom",
+            },
+
+            // configurator
             canvas: ".js-ring-configurator-viewer",
             options: ".js-ring-configurator-options",
             colors: ".js-ring-configurator-colors",
@@ -15,6 +28,8 @@ export default class ModelConfiguratorWrapper {
             engravingText: ".js-ring-configurator-engraving-text",
             engravingSize: ".js-ring-configurator-engraving-size",
             engravingSizeValue: ".js-ring-configurator-engraving-size-value",
+
+            //states
             states: {
                 isActive: "is-active",
                 isVisible: "is-visible",
@@ -35,7 +50,18 @@ export default class ModelConfiguratorWrapper {
             },
         });
 
+        // general
         this.body = document.body;
+
+        // decorative
+        this.frameTopLeft = document.querySelector(this.DOM.frame.topLeft);
+        this.frameTopRight = document.querySelector(this.DOM.frame.topRight);
+        this.frameBottomRight = document.querySelector(this.DOM.frame.bottomRight);
+        this.frameBottomLeft = document.querySelector(this.DOM.frame.bottomLeft);
+        this.frameLeft = document.querySelector(this.DOM.frame.left);
+        this.frameReft = document.querySelector(this.DOM.frame.reft);
+
+        // configurator
         this.options = document.querySelector(this.DOM.options);
         this.engraving = document.querySelector(this.DOM.engraving);
         this.engravingText = document.querySelector(this.DOM.engravingText);
@@ -45,6 +71,12 @@ export default class ModelConfiguratorWrapper {
         this.colors = document.querySelectorAll(this.DOM.colors);
         this.screenshot = document.querySelector(this.DOM.screenshot);
         this.scenes = document.querySelectorAll(this.DOM.scene);
+
+        // timeline
+        this.introTl = gsap.timeline({
+            delay: 1,
+            paused: true,
+        });
     }
 
     init() {

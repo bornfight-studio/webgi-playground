@@ -1,0 +1,56 @@
+.c-frame {
+    --frame-offset: 50px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    &__line {
+        display: inline-block;
+        background-color: $white;
+        position: absolute;
+
+        &--left {
+            top: var(--frame-offset);
+            bottom: var(--frame-offset);
+            left: var(--frame-offset);
+            width: 3px;
+            transform-origin: bottom;
+        }
+
+        &--right {
+            top: var(--frame-offset);
+            bottom: var(--frame-offset);
+            right: var(--frame-offset);
+            width: 3px;
+            transform-origin: bottom;
+        }
+
+        &--top-left {
+            top: var(--frame-offset);
+            left: var(--frame-offset);
+            right: 50%;
+            height: 3px;
+            transform-origin: left;
+        }
+
+        &--top-right {
+            top: var(--frame-offset);
+            right: var(--frame-offset);
+            left: 50%;
+            height: 3px;
+            transform-origin: right;
+        }
+
+        &--bottom {
+            bottom: var(--frame-offset);
+            left: var(--frame-offset);
+            right: var(--frame-offset);
+            height: 3px;
+            transform-origin: right;
+        }
+    }
+}
