@@ -1,3 +1,10 @@
+:root {
+    --font-primary: #{$roboto};
+    --font-secondary: #{$roboto};
+    --text-color: #{$black};
+    --bg-color: #{$white};
+}
+
 html,
 body {
     -webkit-font-smoothing: antialiased;

@@ -766,6 +766,13 @@ input[type=range]::-moz-focus-outer {
 /**
  * Generate css variables for spacing in > xxl breakpoint if use-css-var is true and use-container is false
  */
+:root {
+  --font-primary: Roboto, sans-serif;
+  --font-secondary: Roboto, sans-serif;
+  --text-color: #000000;
+  --bg-color: #ffffff;
+}
+
 html,
 body {
   -webkit-font-smoothing: antialiased;
@@ -809,6 +816,16 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
  * Examples
  * Ring configurator
  */
+#c-ring-configurator {
+  --text-color: #521400;
+  --bg-color: #F1EFEB;
+  --font-primary: PP Fragment Sans, sans-serif;
+  --font-secondary: OT Jubilee Platinum, serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  font-family: var(--font-primary);
+}
+
 .c-ring-configurator-header {
   position: fixed;
   top: 0;
@@ -819,16 +836,11 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   padding: 20px;
 }
 .c-ring-configurator-header__title {
-  font-family: "OT Jubilee Platinum", serif;
-  font-weight: normal;
-  font-style: normal;
+  font-family: var(--font-secondary);
   font-size: 10vh;
   line-height: 1em;
 }
 .c-ring-configurator-header__subtitle {
-  font-family: "PP Fragment Sans", sans-serif;
-  font-weight: normal;
-  font-style: normal;
   font-size: 16px;
 }
 
@@ -907,6 +919,18 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   font-family: "Roboto", sans-serif;
   line-height: 133%;
   letter-spacing: -0.0066666667em;
+}
+
+.u-font-primary {
+  font-family: var(--font-primary);
+  font-weight: normal;
+  font-style: normal;
+}
+
+.u-font-secondary {
+  font-family: var(--font-secondary);
+  font-weight: normal;
+  font-style: normal;
 }
 
 .u-uppercase {

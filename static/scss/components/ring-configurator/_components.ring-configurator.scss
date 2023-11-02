@@ -1,0 +1,13 @@
+#c-ring-configurator {
+    --text-color: #521400;
+    --bg-color: #F1EFEB;
+    --font-primary: #{$pp-fragment};
+    --font-secondary: #{$ot-jubilee};
+
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    font-family: var(--font-primary);
+}
+
+.c-ring-configurator {
+}

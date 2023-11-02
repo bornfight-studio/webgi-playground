@@ -90,6 +90,18 @@
     @include b2;
 }
 
+.u-font-primary {
+    font-family: var(--font-primary);
+    font-weight: normal;
+    font-style: normal;
+}
+
+.u-font-secondary {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    font-style: normal;
+}
+
 .u-uppercase {
     text-transform: uppercase;
 }

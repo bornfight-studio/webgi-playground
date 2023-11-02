@@ -8,17 +8,12 @@
     padding: 20px;
 
     &__title {
-        font-family: $ot-jubilee;
-        font-weight: normal;
-        font-style: normal;
+        font-family: var(--font-secondary);
         font-size: 10vh;
         line-height: 1em;
     }
 
     &__subtitle {
-        font-family: $pp-fragment;
-        font-weight: normal;
-        font-style: normal;
         font-size: 16px;
     }
 }
