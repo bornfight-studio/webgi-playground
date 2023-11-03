@@ -5,8 +5,41 @@
     width: 100%;
     z-index: 100;
     text-align: center;
-    padding: 20px;
-    pointer-events: none;
+    padding: 20px var(--frame-offset);
+
+    &__close {
+        @include button-reset;
+        font-size: var(--fs-b0);
+        display: inline-flex;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: var(--frame-offset);
+        margin-top: -0.75em;
+        margin-left: -0.75em;
+        transition: all 0.3s;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        opacity: 0;
+        visibility: hidden;
+
+        .u-icon {
+            font-size: 0.75em;
+            margin-right: 0.75em;
+            transition: all 0.3s;
+        }
+
+        @include hover {
+            .u-icon {
+                transform: translateX(-50%);
+            }
+        }
+
+        .has-options-active & {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 
     &__title {
         display: inline-block;

@@ -27,6 +27,7 @@ export default class ModelConfiguratorWrapper {
             // configurator
             canvas: ".js-ring-configurator-viewer",
             trigger: ".js-ring-configurator-trigger",
+            close: ".js-ring-configurator-close",
             options: ".js-ring-configurator-options",
             colors: ".js-ring-configurator-colors",
             colorOption: ".js-ring-configurator-color",
@@ -62,6 +63,7 @@ export default class ModelConfiguratorWrapper {
 
         // configurator
         this.trigger = document.querySelector(this.DOM.trigger);
+        this.close = document.querySelector(this.DOM.close);
         this.options = document.querySelector(this.DOM.options);
         this.engraving = document.querySelector(this.DOM.engraving);
         this.engravingText = document.querySelector(this.DOM.engravingText);
@@ -81,6 +83,9 @@ export default class ModelConfiguratorWrapper {
         this.outroTl = gsap.timeline({
             delay: 0,
             paused: true,
+            onComplete: () => {
+                this.body.classList.add(this.DOM.states.optionsActive);
+            },
         });
 
 
@@ -159,13 +164,13 @@ export default class ModelConfiguratorWrapper {
             .to(this.tagline, {
                 autoAlpha: 1,
                 y: "0%",
-                ease: "expo.out",
+                ease: "expo.inOut",
                 duration: 0.6,
             }, "start+=1.2")
             .to(this.cta, {
                 autoAlpha: 1,
                 y: "0%",
-                ease: "expo.out",
+                ease: "expo.inOut",
                 duration: 0.8,
             }, "start+=1.4");
 
@@ -189,7 +194,7 @@ export default class ModelConfiguratorWrapper {
                 duration: 1,
                 autoAlpha: 0,
                 yPercent: -100,
-                ease: "expo.out",
+                ease: "expo.inOut",
                 stagger: {
                     from: "center",
                     each: 0.075,
@@ -205,7 +210,7 @@ export default class ModelConfiguratorWrapper {
                 duration: 1,
                 autoAlpha: 1,
                 yPercent: 0,
-                ease: "expo.out",
+                ease: "expo.inOut",
                 stagger: {
                     from: "center",
                     each: 0.075,
@@ -217,13 +222,13 @@ export default class ModelConfiguratorWrapper {
             .to(this.tagline, {
                 autoAlpha: 0,
                 y: "-50%",
-                ease: "expo.out",
+                ease: "expo.inOut",
                 duration: 0.4,
             }, "start+=1")
             .to(this.cta, {
                 autoAlpha: 0,
                 y: "-50%",
-                ease: "expo.out",
+                ease: "expo.inOut",
                 duration: 0.6,
             }, "start+=1.2");
     }
@@ -336,6 +341,11 @@ export default class ModelConfiguratorWrapper {
     configuratorToggler() {
         this.trigger.addEventListener("click", () => {
             this.outroTl.play();
+        })
+
+        this.close.addEventListener("click", () => {
+            this.body.classList.remove(this.DOM.states.optionsActive);
+            this.outroTl.timeScale(1.5).reverse();
         })
     }
 }
