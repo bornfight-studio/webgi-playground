@@ -1,5 +1,8 @@
 import RingConfigurator from "./RingConfigurator";
 import gsap from "gsap";
+import {SplitText} from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
 
 export default class ModelConfiguratorWrapper {
     constructor() {
@@ -7,8 +10,13 @@ export default class ModelConfiguratorWrapper {
             // general
             body: "body",
 
-            // decorative
+            // UI
+            logo: ".js-logo",
+            logoSmall: ".js-logo-small",
+            tagline: ".js-tagline",
+            cta: ".js-cta",
             frame: {
+                wrapper: ".js-frame",
                 topLeft: ".js-frame-top-left",
                 topRight: ".js-frame-top-right",
                 left: ".js-frame-left",
@@ -18,6 +26,7 @@ export default class ModelConfiguratorWrapper {
 
             // configurator
             canvas: ".js-ring-configurator-viewer",
+            trigger: ".js-ring-configurator-trigger",
             options: ".js-ring-configurator-options",
             colors: ".js-ring-configurator-colors",
             colorOption: ".js-ring-configurator-color",
@@ -37,31 +46,22 @@ export default class ModelConfiguratorWrapper {
             },
         };
 
-        this.modelConfigurator = new RingConfigurator({
-            elementClass: this.DOM.canvas,
-            modelUrl: "../static/models/ring-engraving-v7.glb",
-            ringOptions: window.ringOptions,
-            mouseAnimation: false,
-            onLoad: () => {
-                this.init();
-            },
-            onProgress: (progress) => {
-                console.log(progress);
-            },
-        });
-
         // general
         this.body = document.body;
 
-        // decorative
+        // UI
+        this.logo = document.querySelector(this.DOM.logo);
+        this.logoSmall = document.querySelector(this.DOM.logoSmall);
+        this.tagline = document.querySelector(this.DOM.tagline);
+        this.cta = document.querySelector(this.DOM.cta);
         this.frameTopLeft = document.querySelector(this.DOM.frame.topLeft);
         this.frameTopRight = document.querySelector(this.DOM.frame.topRight);
-        this.frameBottomRight = document.querySelector(this.DOM.frame.bottomRight);
-        this.frameBottomLeft = document.querySelector(this.DOM.frame.bottomLeft);
+        this.frameBottom = document.querySelector(this.DOM.frame.bottom);
         this.frameLeft = document.querySelector(this.DOM.frame.left);
-        this.frameReft = document.querySelector(this.DOM.frame.reft);
+        this.frameRight = document.querySelector(this.DOM.frame.right);
 
         // configurator
+        this.trigger = document.querySelector(this.DOM.trigger);
         this.options = document.querySelector(this.DOM.options);
         this.engraving = document.querySelector(this.DOM.engraving);
         this.engravingText = document.querySelector(this.DOM.engravingText);
@@ -74,8 +74,35 @@ export default class ModelConfiguratorWrapper {
 
         // timeline
         this.introTl = gsap.timeline({
-            delay: 1,
+            delay: 0,
             paused: true,
+        });
+
+        this.outroTl = gsap.timeline({
+            delay: 0,
+            paused: true,
+        });
+
+
+        // configurator
+        this.modelConfigurator = new RingConfigurator({
+            elementClass: this.DOM.canvas,
+            modelUrl: "../static/models/ring-engraving-v7.glb",
+            ringOptions: window.ringOptions,
+            mouseAnimation: false,
+            onLoad: () => {
+                this.init();
+            },
+            onProgress: (progress) => {
+                gsap.to(this.frameBottom, {
+                    duration: 0.4,
+                    scaleX: progress / 100,
+
+                    onComplete: () => {
+                        this.introTl.play();
+                    }
+                });
+            },
         });
     }
 
@@ -85,8 +112,120 @@ export default class ModelConfiguratorWrapper {
             this.keyboardShortcut();
             this.takeScreenshot("ring-configurator.png");
             this.sceneToggler();
+            this.configuratorToggler();
             this.engravingController();
         }
+
+        this.initTimelines();
+    }
+
+    initTimelines() {
+        const logoSplit = new SplitText(this.logo, {
+            type: "chars",
+            charsClass: "u-split-text-char",
+        });
+        const logoSmallSplit = new SplitText(this.logoSmall, {
+            type: "chars",
+            charsClass: "u-split-text-char",
+        });
+
+        this.introTl.add("start")
+            .to([this.frameLeft, this.frameRight], {
+                scaleY: 1,
+                duration: 1,
+                ease: "expo.inOut"
+            })
+            .to([this.frameTopRight, this.frameTopLeft], {
+                scaleX: 1,
+                duration: 0.8,
+                ease: "expo.inOut"
+            })
+            .fromTo(logoSplit.chars, {
+                autoAlpha: 0,
+                yPercent: 110,
+            },{
+                duration: 1,
+                autoAlpha: 1,
+                yPercent: 0,
+                ease: "expo.out",
+                stagger: {
+                    from: "center",
+                    each: 0.075,
+                },
+                onStart: () => {
+                    this.logo.classList.add(this.DOM.states.isVisible);
+                }
+            }, "start+=0.4")
+            .to(this.tagline, {
+                autoAlpha: 1,
+                y: "0%",
+                ease: "expo.out",
+                duration: 0.6,
+            }, "start+=1.2")
+            .to(this.cta, {
+                autoAlpha: 1,
+                y: "0%",
+                ease: "expo.out",
+                duration: 0.8,
+            }, "start+=1.4");
+
+        this.outroTl.add("start")
+            .to([this.frameTopRight, this.frameTopLeft], {
+                scaleX: 0,
+                duration: 0.6,
+                ease: "expo.in"
+            }, "start")
+            .to([this.frameRight, this.frameLeft], {
+                scaleY: 0,
+                duration: 0.8,
+                ease: "expo.inOut"
+            })
+            .to(this.frameBottom, {
+                scaleX: 0,
+                duration: 1,
+                ease: "expo.inOut",
+            })
+            .to(logoSplit.chars,{
+                duration: 1,
+                autoAlpha: 0,
+                yPercent: -100,
+                ease: "expo.out",
+                stagger: {
+                    from: "center",
+                    each: 0.075,
+                },
+                onStart: () => {
+                    this.logo.classList.add(this.DOM.states.isVisible);
+                }
+            }, "start+=0.4")
+            .fromTo(logoSmallSplit.chars, {
+                autoAlpha: 0,
+                yPercent: 110,
+            },{
+                duration: 1,
+                autoAlpha: 1,
+                yPercent: 0,
+                ease: "expo.out",
+                stagger: {
+                    from: "center",
+                    each: 0.075,
+                },
+                onStart: () => {
+                    this.logoSmall.classList.add(this.DOM.states.isVisible);
+                }
+            }, "start+=0.5")
+            .to(this.tagline, {
+                autoAlpha: 0,
+                y: "-50%",
+                ease: "expo.out",
+                duration: 0.4,
+            }, "start+=1")
+            .to(this.cta, {
+                autoAlpha: 0,
+                y: "-50%",
+                ease: "expo.out",
+                duration: 0.6,
+            }, "start+=1.2");
     }
 
     colorController() {
@@ -192,5 +331,11 @@ export default class ModelConfiguratorWrapper {
                 this.modelConfigurator.setCameraPosition(cameraPosition);
             });
         });
+    }
+
+    configuratorToggler() {
+        this.trigger.addEventListener("click", () => {
+            this.outroTl.play();
+        })
     }
 }

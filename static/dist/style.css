@@ -87,6 +87,13 @@
  * @include focus{}
  */
 /**
+ * Button reset
+ * Make button to look like text
+ * Useful for any kind of UI based on <button> element
+ * usage:
+ * @include button-reset;
+ */
+/**
  * Get transition easing from $settings-transitions-easing
  */
 /**
@@ -771,6 +778,7 @@ input[type=range]::-moz-focus-outer {
   --font-secondary: Roboto, sans-serif;
   --text-color: #000000;
   --bg-color: #ffffff;
+  --fs-b0: 15px;
 }
 
 html,
@@ -836,6 +844,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   left: var(--frame-offset);
   width: 3px;
   transform-origin: bottom;
+  transform: scaleY(0);
 }
 .c-frame__line--right {
   top: var(--frame-offset);
@@ -843,6 +852,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   right: var(--frame-offset);
   width: 3px;
   transform-origin: bottom;
+  transform: scaleY(0);
 }
 .c-frame__line--top-left {
   top: var(--frame-offset);
@@ -850,6 +860,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   right: 50%;
   height: 3px;
   transform-origin: left;
+  transform: scaleX(0);
 }
 .c-frame__line--top-right {
   top: var(--frame-offset);
@@ -857,13 +868,15 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   left: 50%;
   height: 3px;
   transform-origin: right;
+  transform: scaleX(0);
 }
 .c-frame__line--bottom {
   bottom: var(--frame-offset);
   left: var(--frame-offset);
   right: var(--frame-offset);
   height: 3px;
-  transform-origin: right;
+  transform-origin: center;
+  transform: scaleX(0);
 }
 
 #c-ring-configurator {
@@ -879,6 +892,14 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   overflow: hidden;
 }
 
+.c-ring-configurator__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
 .c-ring-configurator__heading {
   position: absolute;
   top: 0;
@@ -888,19 +909,106 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   z-index: 100;
   text-align: center;
   padding: 20px;
+  padding-top: 8.3333333333vw;
+  padding-bottom: 4.8611111111vw;
 }
 .c-ring-configurator__heading-title {
   font-family: var(--font-secondary);
   font-size: 10.4166666667vw;
   line-height: 1em;
-  padding-bottom: 0.15em;
+  margin-bottom: 0;
+}
+.c-ring-configurator__heading-title > div {
+  padding: 0 0.15em;
+  line-height: 1em;
+  height: 1.15em;
+  overflow: hidden;
+  display: none;
+}
+.c-ring-configurator__heading-title > div.is-visible {
+  display: block;
+}
+.c-ring-configurator__heading-title > div > div {
+  opacity: 0;
+  visibility: hidden;
 }
 .c-ring-configurator__heading-subtitle {
   font-size: 15px;
+  margin-bottom: 4.8611111111vw;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+}
+.c-ring-configurator__cta {
+  margin-bottom: 4.8611111111vw;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+}
+.c-ring-configurator__button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  outline: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  vertical-align: top;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  width: auto;
+  height: auto;
+  background: transparent;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  font-size: var(--fs-b0);
+  padding: 10px 60px;
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.c-ring-configurator__button:hover, .c-ring-configurator__button:focus, .c-ring-configurator__button:active {
+  outline: none;
+}
+@media (hover: none) {
+  .c-ring-configurator__button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .c-ring-configurator__button:active {
+    /* 1 */
+    background-color: var(--bg-color);
+  }
+}
+@media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .c-ring-configurator__button:hover {
+    /* 2 */
+    background-color: var(--bg-color);
+  }
+}
+
+.u-split-text-char {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .c-ring-configurator-header {
@@ -911,6 +1019,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   z-index: 100;
   text-align: center;
   padding: 20px;
+  pointer-events: none;
 }
 .c-ring-configurator-header__title {
   display: inline-block;
@@ -919,11 +1028,19 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   height: 1.25em;
   overflow: hidden;
 }
-.c-ring-configurator-header__title span {
-  display: block;
+.c-ring-configurator-header__title > div {
   padding: 0 0.15em;
+  height: 1.15em;
   line-height: 1em;
-  transform: translateY(110%);
+  overflow: hidden;
+  display: none;
+}
+.c-ring-configurator-header__title > div.is-visible {
+  display: block;
+}
+.c-ring-configurator-header__title > div > div {
+  opacity: 0;
+  visibility: hidden;
 }
 
 /**

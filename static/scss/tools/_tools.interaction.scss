@@ -45,3 +45,49 @@
         }
     }
 }
+
+/**
+ * Button reset
+ * Make button to look like text
+ * Useful for any kind of UI based on <button> element
+ * usage:
+ * @include button-reset;
+ */
+@mixin button-reset() {
+    border: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    outline: 0;
+    border-radius: 0;
+    box-shadow: none;
+    text-decoration: none;
+    text-transform: none;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    width: auto;
+    height: auto;
+    background: transparent;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}

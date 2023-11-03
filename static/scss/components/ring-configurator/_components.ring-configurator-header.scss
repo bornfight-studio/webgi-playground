@@ -6,6 +6,7 @@
     z-index: 100;
     text-align: center;
     padding: 20px;
+    pointer-events: none;
 
     &__title {
         display: inline-block;
@@ -13,12 +14,24 @@
         font-size: 30px;
         height: 1.25em;
         overflow: hidden;
+        //border: 1px solid blue;
 
-        span {
-            display: block;
+        > div {
             padding: 0 0.15em;
+            height: 1.15em;
             line-height: 1em;
-            transform: translateY(110%);
+            overflow: hidden;
+            display: none;
+            //border: 1px solid red;
+
+            &.is-visible {
+                display: block;
+            }
+
+            > div {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
     }
 }

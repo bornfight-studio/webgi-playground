@@ -14,6 +14,15 @@
 
 .c-ring-configurator {
 
+    &__frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+    }
+
     &__heading {
         position: absolute;
         top: 0;
@@ -23,20 +32,71 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         z-index: 100;
         text-align: center;
         padding: 20px;
+        padding-top: get-vw(120px);
+        padding-bottom: get-vw(70px);
 
         &-title {
             font-family: var(--font-secondary);
             font-size: get-vw(150px);
             line-height: 1em;
-            padding-bottom: 0.15em;
+            margin-bottom: 0;
+            //border: 1px solid blue;
+
+            > div {
+                padding: 0 0.15em;
+                line-height: 1em;
+                height: 1.15em;
+                overflow: hidden;
+                display: none;
+                //border: 1px solid red;
+
+                &.is-visible {
+                    display: block;
+                }
+
+                > div {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
         }
 
         &-subtitle {
             font-size: 15px;
+            margin-bottom: get-vw(70px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100%)
         }
     }
+
+    &__cta {
+        margin-bottom: get-vw(70px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100%)
+    }
+
+    &__button {
+        @include button-reset();
+        font-size: var(--fs-b0);
+        padding: 10px 60px;
+        background-color: transparent;
+        border: 1px solid var(--text-color);
+        border-radius: 100px;
+        transition: all 0.2s;
+
+        @include hover {
+            background-color: var(--bg-color);
+        }
+    }
+}
+
+.u-split-text-char {
+    opacity: 0;
+    visibility: hidden;
 }
