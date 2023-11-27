@@ -28,14 +28,87 @@
         width: 100%;
         height: 100%;
         display: flex;
-        align-items: flex-end;
-        justify-content: flex-start;
+        align-items: flex-start;
+        justify-content: flex-end;
+        flex-direction: column;
         padding: get-vw(30px);
         opacity: 0;
         transition: 0.3s;
 
         &.is-visible {
             opacity: 1;
+        }
+    }
+
+    &__configurator-inputs-inner {
+        //height: get-vw(100px);
+        height: get-vw(300px);
+        width: 100%;
+        position: relative;
+    }
+
+    &__input-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: 0.25s;
+
+        &.is-active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition-delay: 0.2s;
+        }
+    }
+
+    &__configurator-inputs-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        li {
+            margin-right: get-vw(20px);
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &__configurator-inputs-tab {
+        text-transform: uppercase;
+        position: relative;
+        opacity: 0.5;
+        transition: opacity 0.25s;
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #dea593;
+            transform: scaleX(0);
+            transition: transform 0.25s;
+        }
+
+        @include hover {
+            opacity: 1;
+        }
+
+        &.is-active {
+            pointer-events: none;
+            opacity: 1;
+
+            &:after {
+                transform: scaleX(1);
+            }
         }
     }
 

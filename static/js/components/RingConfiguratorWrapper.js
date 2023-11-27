@@ -27,15 +27,14 @@ export default class ModelConfiguratorWrapper {
             // configurator
             canvas: ".js-ring-configurator-viewer",
             trigger: ".js-ring-configurator-trigger",
+            inputWrappers: ".js-ring-configurator-input-wrapper",
+            inputWrapperTriggers: ".js-ring-configurator-input-wrapper-tab-trigger",
             inputs: ".js-ring-configurator-inputs",
             close: ".js-ring-configurator-close",
-            ringMaterial: ".js-ring-configurator-ring-material",
-            gem: ".js-ring-configurator-gem",
             colors: ".js-ring-configurator-colors",
             colorOption: ".js-ring-configurator-color",
             screenshot: ".js-ring-configurator-screenshot",
             scene: ".js-ring-configurator-scene",
-            engraving: ".js-ring-configurator-engraving",
             engravingFont: ".js-ring-configurator-engraving-font",
             engravingText: ".js-ring-configurator-engraving-text",
             engravingSize: ".js-ring-configurator-engraving-size",
@@ -66,11 +65,10 @@ export default class ModelConfiguratorWrapper {
 
         // configurator
         this.trigger = document.querySelector(this.DOM.trigger);
+        this.inputWrappers = document.querySelectorAll(this.DOM.inputWrappers);
+        this.inputWrapperTriggers = document.querySelectorAll(this.DOM.inputWrapperTriggers);
         this.close = document.querySelector(this.DOM.close);
         this.inputs = document.querySelector(this.DOM.inputs);
-        this.gem = document.querySelector(this.DOM.gem);
-        this.ringMaterial = document.querySelector(this.DOM.ringMaterial);
-        this.engraving = document.querySelector(this.DOM.engraving);
         this.engravingText = document.querySelector(this.DOM.engravingText);
         this.engravingFont = document.querySelector(this.DOM.engravingFont);
         this.engravingSize = document.querySelector(this.DOM.engravingSize);
@@ -133,9 +131,28 @@ export default class ModelConfiguratorWrapper {
             this.sceneToggler();
             this.configuratorToggler();
             this.engravingController();
+            this.tabsController();
         }
 
         this.initTimelines();
+    }
+
+    tabsController() {
+        let currentActive = 0;
+
+        if (this.inputWrapperTriggers && this.inputWrapperTriggers.length > 0 && this.inputWrapperTriggers.length === this.inputWrappers.length) {
+            this.inputWrapperTriggers.forEach((trigger, index) => {
+                trigger.addEventListener("click", () => {
+                    this.inputWrappers[currentActive].classList.remove(this.DOM.states.isActive);
+                    this.inputWrappers[index].classList.add(this.DOM.states.isActive);
+
+                    this.inputWrapperTriggers[currentActive].classList.remove(this.DOM.states.isActive);
+                    this.inputWrapperTriggers[index].classList.add(this.DOM.states.isActive);
+
+                    currentActive = index;
+                });
+            });
+        }
     }
 
     initTimelines() {
@@ -348,9 +365,9 @@ export default class ModelConfiguratorWrapper {
 
     keyboardShortcut() {
         if (this.body.dataset.showConfigurator === "false") {
-            this.ringMaterial.remove();
-            this.gem.remove();
-            this.engraving.remove();
+            this.inputWrappers.forEach((inputWrapper) => {
+                inputWrapper.remove();
+            });
         }
 
         document.addEventListener("keyup", (ev) => {
