@@ -41,8 +41,7 @@
     }
 
     &__configurator-inputs-inner {
-        //height: get-vw(100px);
-        height: get-vw(300px);
+        height: get-vw(100px);
         width: 100%;
         position: relative;
     }
@@ -109,6 +108,24 @@
             &:after {
                 transform: scaleX(1);
             }
+        }
+    }
+
+    &__ring-material {
+        display: block;
+
+        ul {
+            display: flex;
+            gap: 10px;
+        }
+    }
+
+    &__gem {
+        display: block;
+
+        ul {
+            display: flex;
+            gap: 10px;
         }
     }
 
@@ -216,4 +233,54 @@
 .u-split-text-char {
     opacity: 0;
     visibility: hidden;
+}
+
+.c-color-option {
+    border-radius: 7px;
+    border: 1px solid #fff;
+    background: #fff;
+    transition: border-color 0.25s;
+    padding: 13px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &.is-active {
+        border-color: #a48e86;
+    }
+}
+
+.c-color {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+
+    &--w-gold {
+        background-color: #eaeaea;
+    }
+
+    &--r-gold {
+        background-color: #f5d4d4;
+    }
+
+    &--y-gold {
+        background-color: #f0daa5;
+    }
+
+    &--w {
+        background-color: #eaeaea;
+    }
+
+    &--r {
+        background-color: #ea5481;
+    }
+
+    &--g {
+        background-color: #08a36b;
+    }
+
+    &--b {
+        background-color: #0071c3;
+    }
 }

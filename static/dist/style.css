@@ -816,418 +816,6 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
  * Objects
  */
 /**
- * Components
- */
-/**
- * Components
- */
-/**
- * Examples
- * Ring configurator
- */
-.c-frame {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-.c-frame__line {
-  display: inline-block;
-  background-color: #ffffff;
-  position: absolute;
-}
-.c-frame__line--left {
-  top: var(--frame-offset);
-  bottom: var(--frame-offset);
-  left: var(--frame-offset);
-  width: 3px;
-  transform-origin: bottom;
-  transform: scaleY(0);
-}
-.c-frame__line--right {
-  top: var(--frame-offset);
-  bottom: var(--frame-offset);
-  right: var(--frame-offset);
-  width: 3px;
-  transform-origin: bottom;
-  transform: scaleY(0);
-}
-.c-frame__line--top-left {
-  top: var(--frame-offset);
-  left: var(--frame-offset);
-  right: 50%;
-  height: 3px;
-  transform-origin: left;
-  transform: scaleX(0);
-}
-.c-frame__line--top-right {
-  top: var(--frame-offset);
-  right: var(--frame-offset);
-  left: 50%;
-  height: 3px;
-  transform-origin: right;
-  transform: scaleX(0);
-}
-.c-frame__line--bottom {
-  bottom: var(--frame-offset);
-  left: var(--frame-offset);
-  right: var(--frame-offset);
-  height: 3px;
-  transform-origin: center;
-  transform: scaleX(0);
-}
-
-#c-ring-configurator {
-  --text-color: #521400;
-  --bg-color: #e2e2e2;
-  --font-primary: PP Fragment Sans, sans-serif;
-  --font-secondary: OT Jubilee Platinum, serif;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  font-family: var(--font-primary);
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-
-.c-ring-configurator__actions, .c-ring-configurator__gem, .c-ring-configurator__engraving {
-  opacity: 0;
-}
-.c-ring-configurator__configurator-inputs {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  flex-direction: column;
-  padding: 2.0833333333vw;
-  opacity: 0;
-  transition: 0.3s;
-}
-.c-ring-configurator__configurator-inputs.is-visible {
-  opacity: 1;
-}
-.c-ring-configurator__configurator-inputs-inner {
-  height: 20.8333333333vw;
-  width: 100%;
-  position: relative;
-}
-.c-ring-configurator__input-wrapper {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: 0.25s;
-}
-.c-ring-configurator__input-wrapper.is-active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transition-delay: 0.2s;
-}
-.c-ring-configurator__configurator-inputs-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.c-ring-configurator__configurator-inputs-tabs li {
-  margin-right: 1.3888888889vw;
-}
-.c-ring-configurator__configurator-inputs-tabs li:last-child {
-  margin-right: 0;
-}
-.c-ring-configurator__configurator-inputs-tab {
-  text-transform: uppercase;
-  position: relative;
-  opacity: 0.5;
-  transition: opacity 0.25s;
-}
-.c-ring-configurator__configurator-inputs-tab:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #dea593;
-  transform: scaleX(0);
-  transition: transform 0.25s;
-}
-@media (hover: none) {
-  .c-ring-configurator__configurator-inputs-tab {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  .c-ring-configurator__configurator-inputs-tab:active {
-    /* 1 */
-    opacity: 1;
-  }
-}
-@media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .c-ring-configurator__configurator-inputs-tab:hover {
-    /* 2 */
-    opacity: 1;
-  }
-}
-.c-ring-configurator__configurator-inputs-tab.is-active {
-  pointer-events: none;
-  opacity: 1;
-}
-.c-ring-configurator__configurator-inputs-tab.is-active:after {
-  transform: scaleX(1);
-}
-.c-ring-configurator__frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-  pointer-events: none;
-}
-.c-ring-configurator__heading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  z-index: 2;
-  text-align: center;
-  padding: 20px;
-  padding-top: 8.3333333333vw;
-  padding-bottom: 4.8611111111vw;
-}
-.c-ring-configurator__heading-title {
-  font-family: var(--font-secondary);
-  font-size: 10.4166666667vw;
-  line-height: 1em;
-  margin-bottom: 0;
-}
-.c-ring-configurator__heading-title > div {
-  padding: 0 0.15em;
-  line-height: 1em;
-  height: 1.15em;
-  overflow: hidden;
-  display: none;
-}
-.c-ring-configurator__heading-title > div.is-visible {
-  display: block;
-}
-.c-ring-configurator__heading-title > div > div {
-  opacity: 0;
-  visibility: hidden;
-}
-.c-ring-configurator__heading-subtitle {
-  font-size: 15px;
-  margin-bottom: 4.8611111111vw;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(100%);
-}
-.has-options-active .c-ring-configurator__heading {
-  display: none;
-}
-.c-ring-configurator__cta {
-  margin-bottom: 4.8611111111vw;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(100%);
-}
-.c-ring-configurator__button {
-  border: none;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  outline: 0;
-  border-radius: 0;
-  box-shadow: none;
-  text-decoration: none;
-  text-transform: none;
-  text-align: center;
-  overflow: hidden;
-  cursor: pointer;
-  vertical-align: top;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-  width: auto;
-  height: auto;
-  background: transparent;
-  line-height: normal;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  font-size: var(--fs-b0);
-  padding: 10px 60px;
-  background-color: transparent;
-  border: 1px solid var(--text-color);
-  border-radius: 100px;
-  transition: all 0.2s;
-}
-.c-ring-configurator__button:hover, .c-ring-configurator__button:focus, .c-ring-configurator__button:active {
-  outline: none;
-}
-@media (hover: none) {
-  .c-ring-configurator__button {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  .c-ring-configurator__button:active {
-    /* 1 */
-    background-color: var(--bg-color);
-  }
-}
-@media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .c-ring-configurator__button:hover {
-    /* 2 */
-    background-color: var(--bg-color);
-  }
-}
-.c-ring-configurator__model-inner {
-  opacity: 0;
-  transform: scale(0.3) translateY(-50%);
-  transition: opacity 0.25s linear, transform 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-.c-ring-configurator__model-inner.is-visible {
-  opacity: 1;
-}
-.c-ring-configurator__model-inner.is-zoomed {
-  transform: scale(1) translateY(0%);
-}
-
-.u-split-text-char {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.c-ring-configurator-header {
-  position: fixed;
-  top: 15px;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  text-align: center;
-  padding: 20px var(--frame-offset);
-}
-.c-ring-configurator-header__close {
-  border: none;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  outline: 0;
-  border-radius: 0;
-  box-shadow: none;
-  text-decoration: none;
-  text-transform: none;
-  text-align: center;
-  overflow: hidden;
-  cursor: pointer;
-  vertical-align: top;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-  width: auto;
-  height: auto;
-  background: transparent;
-  line-height: normal;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  font-size: var(--fs-b0);
-  display: inline-flex;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: var(--frame-offset);
-  margin-top: -0.75em;
-  margin-left: -0.75em;
-  transition: all 0.3s;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  opacity: 0;
-  visibility: hidden;
-}
-.c-ring-configurator-header__close:hover, .c-ring-configurator-header__close:focus, .c-ring-configurator-header__close:active {
-  outline: none;
-}
-.c-ring-configurator-header__close .u-icon {
-  font-size: 0.75em;
-  margin-right: 0.75em;
-  transition: all 0.3s;
-}
-@media (hover: none) {
-  .c-ring-configurator-header__close {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  .c-ring-configurator-header__close:active {
-    /* 1 */
-  }
-  .c-ring-configurator-header__close:active .u-icon {
-    transform: translateX(-50%);
-  }
-}
-@media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .c-ring-configurator-header__close:hover {
-    /* 2 */
-  }
-  .c-ring-configurator-header__close:hover .u-icon {
-    transform: translateX(-50%);
-  }
-}
-.has-options-active .c-ring-configurator-header__close {
-  opacity: 1;
-  visibility: visible;
-}
-.c-ring-configurator-header__title {
-  display: inline-block;
-  font-family: var(--font-secondary);
-  font-size: 30px;
-  height: 1.25em;
-  overflow: hidden;
-}
-.c-ring-configurator-header__title > div {
-  padding: 0 0.15em;
-  height: 1.15em;
-  line-height: 1em;
-  overflow: hidden;
-  display: none;
-}
-.c-ring-configurator-header__title > div.is-visible {
-  display: block;
-}
-.c-ring-configurator-header__title > div > div {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/**
  * Pages
  */
 /**
@@ -1449,6 +1037,474 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 
 .u-ratio--16-9:before {
   padding-bottom: 56.25%;
+}
+
+/**
+ * Components
+ */
+/**
+ * Components
+ */
+/**
+ * Examples
+ * Ring configurator
+ */
+.c-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.c-frame__line {
+  display: inline-block;
+  background-color: #ffffff;
+  position: absolute;
+}
+.c-frame__line--left {
+  top: var(--frame-offset);
+  bottom: var(--frame-offset);
+  left: var(--frame-offset);
+  width: 3px;
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+.c-frame__line--right {
+  top: var(--frame-offset);
+  bottom: var(--frame-offset);
+  right: var(--frame-offset);
+  width: 3px;
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+.c-frame__line--top-left {
+  top: var(--frame-offset);
+  left: var(--frame-offset);
+  right: 50%;
+  height: 3px;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.c-frame__line--top-right {
+  top: var(--frame-offset);
+  right: var(--frame-offset);
+  left: 50%;
+  height: 3px;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+.c-frame__line--bottom {
+  bottom: var(--frame-offset);
+  left: var(--frame-offset);
+  right: var(--frame-offset);
+  height: 3px;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+
+#c-ring-configurator {
+  --text-color: #521400;
+  --bg-color: #e2e2e2;
+  --font-primary: PP Fragment Sans, sans-serif;
+  --font-secondary: OT Jubilee Platinum, serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  font-family: var(--font-primary);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.c-ring-configurator__actions, .c-ring-configurator__gem, .c-ring-configurator__engraving {
+  opacity: 0;
+}
+.c-ring-configurator__configurator-inputs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 2.0833333333vw;
+  opacity: 0;
+  transition: 0.3s;
+}
+.c-ring-configurator__configurator-inputs.is-visible {
+  opacity: 1;
+}
+.c-ring-configurator__configurator-inputs-inner {
+  height: 6.9444444444vw;
+  width: 100%;
+  position: relative;
+}
+.c-ring-configurator__input-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.25s;
+}
+.c-ring-configurator__input-wrapper.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0.2s;
+}
+.c-ring-configurator__configurator-inputs-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.c-ring-configurator__configurator-inputs-tabs li {
+  margin-right: 1.3888888889vw;
+}
+.c-ring-configurator__configurator-inputs-tabs li:last-child {
+  margin-right: 0;
+}
+.c-ring-configurator__configurator-inputs-tab {
+  text-transform: uppercase;
+  position: relative;
+  opacity: 0.5;
+  transition: opacity 0.25s;
+}
+.c-ring-configurator__configurator-inputs-tab:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #dea593;
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+@media (hover: none) {
+  .c-ring-configurator__configurator-inputs-tab {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .c-ring-configurator__configurator-inputs-tab:active {
+    /* 1 */
+    opacity: 1;
+  }
+}
+@media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .c-ring-configurator__configurator-inputs-tab:hover {
+    /* 2 */
+    opacity: 1;
+  }
+}
+.c-ring-configurator__configurator-inputs-tab.is-active {
+  pointer-events: none;
+  opacity: 1;
+}
+.c-ring-configurator__configurator-inputs-tab.is-active:after {
+  transform: scaleX(1);
+}
+.c-ring-configurator__ring-material {
+  display: block;
+}
+.c-ring-configurator__ring-material ul {
+  display: flex;
+  gap: 10px;
+}
+.c-ring-configurator__gem {
+  display: block;
+}
+.c-ring-configurator__gem ul {
+  display: flex;
+  gap: 10px;
+}
+.c-ring-configurator__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+.c-ring-configurator__heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  padding-top: 8.3333333333vw;
+  padding-bottom: 4.8611111111vw;
+}
+.c-ring-configurator__heading-title {
+  font-family: var(--font-secondary);
+  font-size: 10.4166666667vw;
+  line-height: 1em;
+  margin-bottom: 0;
+}
+.c-ring-configurator__heading-title > div {
+  padding: 0 0.15em;
+  line-height: 1em;
+  height: 1.15em;
+  overflow: hidden;
+  display: none;
+}
+.c-ring-configurator__heading-title > div.is-visible {
+  display: block;
+}
+.c-ring-configurator__heading-title > div > div {
+  opacity: 0;
+  visibility: hidden;
+}
+.c-ring-configurator__heading-subtitle {
+  font-size: 15px;
+  margin-bottom: 4.8611111111vw;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+}
+.has-options-active .c-ring-configurator__heading {
+  display: none;
+}
+.c-ring-configurator__cta {
+  margin-bottom: 4.8611111111vw;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+}
+.c-ring-configurator__button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  outline: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  vertical-align: top;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  width: auto;
+  height: auto;
+  background: transparent;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  font-size: var(--fs-b0);
+  padding: 10px 60px;
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.c-ring-configurator__button:hover, .c-ring-configurator__button:focus, .c-ring-configurator__button:active {
+  outline: none;
+}
+@media (hover: none) {
+  .c-ring-configurator__button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .c-ring-configurator__button:active {
+    /* 1 */
+    background-color: var(--bg-color);
+  }
+}
+@media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .c-ring-configurator__button:hover {
+    /* 2 */
+    background-color: var(--bg-color);
+  }
+}
+.c-ring-configurator__model-inner {
+  opacity: 0;
+  transform: scale(0.3) translateY(-50%);
+  transition: opacity 0.25s linear, transform 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.c-ring-configurator__model-inner.is-visible {
+  opacity: 1;
+}
+.c-ring-configurator__model-inner.is-zoomed {
+  transform: scale(1) translateY(0%);
+}
+
+.u-split-text-char {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.c-color-option {
+  border-radius: 7px;
+  border: 1px solid #fff;
+  background: #fff;
+  transition: border-color 0.25s;
+  padding: 13px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.c-color-option.is-active {
+  border-color: #a48e86;
+}
+
+.c-color {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+}
+.c-color--w-gold {
+  background-color: #eaeaea;
+}
+.c-color--r-gold {
+  background-color: #f5d4d4;
+}
+.c-color--y-gold {
+  background-color: #f0daa5;
+}
+.c-color--w {
+  background-color: #eaeaea;
+}
+.c-color--r {
+  background-color: #ea5481;
+}
+.c-color--g {
+  background-color: #08a36b;
+}
+.c-color--b {
+  background-color: #0071c3;
+}
+
+.c-ring-configurator-header {
+  position: fixed;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  text-align: center;
+  padding: 20px var(--frame-offset);
+}
+.c-ring-configurator-header__close {
+  border: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  outline: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  vertical-align: top;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  width: auto;
+  height: auto;
+  background: transparent;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  font-size: var(--fs-b0);
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: var(--frame-offset);
+  margin-top: -0.75em;
+  margin-left: -0.75em;
+  transition: all 0.3s;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  opacity: 0;
+  visibility: hidden;
+}
+.c-ring-configurator-header__close:hover, .c-ring-configurator-header__close:focus, .c-ring-configurator-header__close:active {
+  outline: none;
+}
+.c-ring-configurator-header__close .u-icon {
+  font-size: 0.75em;
+  margin-right: 0.75em;
+  transition: all 0.3s;
+}
+@media (hover: none) {
+  .c-ring-configurator-header__close {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .c-ring-configurator-header__close:active {
+    /* 1 */
+  }
+  .c-ring-configurator-header__close:active .u-icon {
+    transform: translateX(-50%);
+  }
+}
+@media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .c-ring-configurator-header__close:hover {
+    /* 2 */
+  }
+  .c-ring-configurator-header__close:hover .u-icon {
+    transform: translateX(-50%);
+  }
+}
+.has-options-active .c-ring-configurator-header__close {
+  opacity: 1;
+  visibility: visible;
+}
+.c-ring-configurator-header__title {
+  display: inline-block;
+  font-family: var(--font-secondary);
+  font-size: 30px;
+  height: 1.25em;
+  overflow: hidden;
+}
+.c-ring-configurator-header__title > div {
+  padding: 0 0.15em;
+  height: 1.15em;
+  line-height: 1em;
+  overflow: hidden;
+  display: none;
+}
+.c-ring-configurator-header__title > div.is-visible {
+  display: block;
+}
+.c-ring-configurator-header__title > div > div {
+  opacity: 0;
+  visibility: hidden;
 }
 
 /**
