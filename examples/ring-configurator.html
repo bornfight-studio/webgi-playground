@@ -1,195 +1,227 @@
 <html>
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>WebGi playground — Ring Configurator</title>
-    <link rel="stylesheet" href="../static/dist/style.css"/>
-</head>
-<body id="c-ring-configurator" data-show-configurator="true">
-<header class="c-ring-configurator-header">
-    <button class="c-ring-configurator-header__close js-ring-configurator-close">
-        <i>
-            <svg xmlns="http://www.w3.org/2000/svg" class="u-icon u-icon--arrow-left" viewBox="0 0 12 12" fill="none">
-                <path d="M12 5.32979H2.50382L5.93893 1.7234L5.0229 0.75L0 6L5.0229 11.25L5.93893 10.2926L2.50382 6.68617H12V5.32979Z" fill="currentColor"/>
-            </svg>
-        </i>
-        <span>
-            Back
-        </span>
-    </button>
-    <h1 class="c-ring-configurator-header__title u-uppercase u-font-secondary">
-        <div class="js-logo-small">Jenn&nbsp;Zeiss</div>
-    </h1>
-</header>
-<div class="c-ring-configurator">
-    <div class="c-ring-configurator__frame">
-        <div class="c-frame js-frame">
-            <i class="c-frame__line c-frame__line--top-left js-frame-top-left"></i>
-            <i class="c-frame__line c-frame__line--top-right js-frame-top-right"></i>
-            <i class="c-frame__line c-frame__line--left js-frame-left"></i>
-            <i class="c-frame__line c-frame__line--right js-frame-right"></i>
-            <i class="c-frame__line c-frame__line--bottom js-frame-bottom"></i>
-        </div>
-    </div>
-
-    <div class="c-ring-configurator__heading">
-        <h1 class="c-ring-configurator__heading-title u-uppercase u-font-secondary">
-            <div class="js-logo">Jenn&nbsp;Zeiss</div>
-        </h1>
-        <p class="c-ring-configurator__heading-subtitle u-font-primary js-tagline">Exquisite rings for people with taste</p>
-
-        <div class="c-ring-configurator__cta js-cta">
-            <button class="c-ring-configurator__button js-ring-configurator-trigger">
-                <span>Configure your ring</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>WebGi playground — Ring Configurator</title>
+        <link rel="stylesheet" href="../static/dist/style.css" />
+    </head>
+    <body id="c-ring-configurator" data-show-configurator="true">
+        <header class="c-ring-configurator-header">
+            <button class="c-ring-configurator-header__close js-ring-configurator-close">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="u-icon u-icon--arrow-left" viewBox="0 0 12 12" fill="none">
+                        <path
+                            d="M12 5.32979H2.50382L5.93893 1.7234L5.0229 0.75L0 6L5.0229 11.25L5.93893 10.2926L2.50382 6.68617H12V5.32979Z"
+                            fill="currentColor"
+                        />
+                    </svg>
+                </i>
+                <span> Back </span>
             </button>
+            <h1 class="c-ring-configurator-header__title u-uppercase u-font-secondary">
+                <div class="js-logo-small">Jenn&nbsp;Zeiss</div>
+            </h1>
+        </header>
+        <div class="c-ring-configurator">
+            <div class="c-ring-configurator__frame">
+                <div class="c-frame js-frame">
+                    <i class="c-frame__line c-frame__line--top-left js-frame-top-left"></i>
+                    <i class="c-frame__line c-frame__line--top-right js-frame-top-right"></i>
+                    <i class="c-frame__line c-frame__line--left js-frame-left"></i>
+                    <i class="c-frame__line c-frame__line--right js-frame-right"></i>
+                    <i class="c-frame__line c-frame__line--bottom js-frame-bottom"></i>
+                </div>
+            </div>
+
+            <div class="c-ring-configurator__heading">
+                <h1 class="c-ring-configurator__heading-title u-uppercase u-font-secondary">
+                    <div class="js-logo">Jenn&nbsp;Zeiss</div>
+                </h1>
+                <p class="c-ring-configurator__heading-subtitle u-font-primary js-tagline">Exquisite rings for people with taste</p>
+
+                <div class="c-ring-configurator__cta js-cta">
+                    <button class="c-ring-configurator__button js-ring-configurator-trigger">
+                        <span>Configure your ring</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="c-ring-configurator__model">
+                <canvas
+                    class="js-ring-configurator-viewer c-ring-configurator__model-inner"
+                    style="width: 100%; height: 100%; display: block"
+                ></canvas>
+            </div>
+
+            <div class="c-ring-configurator__configurator-inputs js-ring-configurator-inputs">
+                <div class="c-ring-configurator__text js-ring-configurator-engraving">
+                    <p class="u-b3">Engraving text:</p>
+                    <input
+                        name="fontText"
+                        id="fontText"
+                        type="text"
+                        maxlength="18"
+                        class="c-input js-ring-configurator-engraving-text"
+                        data-engraving-object='["engraving"]'
+                        value="Zaks x BFS 2023."
+                    />
+                    <p class="u-b3">Engraving font family:</p>
+                    <select name="fontFamily" id="fontFamily" class="c-select js-ring-configurator-engraving-font">
+                        <option value="Inter">Inter</option>
+                        <option value="Dancing Script">Dancing script</option>
+                        <option value="Aboreto">Aboreto</option>
+                    </select>
+                    <p class="u-b3">Engraving size:</p>
+                    <div class="c-range-wrapper">
+                        <input
+                            name="fontSize"
+                            id="fontSize"
+                            type="range"
+                            min="80"
+                            step="2"
+                            max="120"
+                            class="c-range js-ring-configurator-engraving-size"
+                            value="100"
+                        />
+                        <span class="c-range-value u-text-center js-ring-configurator-engraving-size-value">100</span>
+                    </div>
+                </div>
+
+                <div class="c-ring-configurator__actions js-ring-configurator-actions">
+                    <p class="u-b3">Scenes:</p>
+                    <button class="c-action-button js-ring-configurator-scene" data-camera-position='{"x": 0, "y": 3.65, "z": 2.75}'>
+                        <span>Close-up</span>
+                    </button>
+                    <button class="c-action-button js-ring-configurator-scene" data-camera-position='{"x": -0.52, "y": 3.73, "z": 7.89}'>
+                        <span>Medium shot</span>
+                    </button>
+                    <button class="c-action-button js-ring-configurator-scene" data-camera-position='{"x": -1, "y": 2.58, "z": 1.54}'>
+                        <span>Engraving</span>
+                    </button>
+                    <button
+                        class="c-action-button c-action-button--active js-ring-configurator-scene"
+                        data-camera-position='{"x": -2.5, "y": 5, "z": 5}'
+                    >
+                        <span>Reset</span>
+                    </button>
+                    <span class="c-separator"></span>
+                    <button class="c-action-button c-action-button--big is-active js-ring-configurator-screenshot">
+                        <i>
+                            <?xml version="1.0" ?>
+                            <svg
+                                class="u-icon u-icon--screenshot"
+                                style="enable-background: new 0 0 30 30"
+                                version="1.1"
+                                viewBox="0 0 30 30"
+                                xml:space="preserve"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                            >
+                                <g>
+                                    <path d="M6,19V17c0-0.552-0.448-1-1-1H5c-0.552,0-1,0.448-1,1V19c0,0.552,0.448,1,1,1H5C5.552,20,6,19.552,6,19z" />
+                                    <path
+                                        d="M10,5L10,5c0,0.553,0.448,1,1,1H13c0.552,0,1-0.448,1-1V5c0-0.552-0.448-1-1-1H11C10.448,4,10,4.448,10,5z"
+                                    />
+                                    <path
+                                        d="M5,14L5,14c0.553,0,1-0.448,1-1V11c0-0.552-0.448-1-1-1H5c-0.552,0-1,0.448-1,1V13C4,13.552,4.448,14,5,14z"
+                                    />
+                                    <path
+                                        d="M23,6h1l0,1c0,0.552,0.448,1,1,1h0c0.552,0,1-0.448,1-1V6c0-1.105-0.895-2-2-2h-1c-0.552,0-1,0.448-1,1v0   C22,5.552,22.448,6,23,6z"
+                                    />
+                                    <path d="M16,5L16,5c0,0.552,0.448,1,1,1h2c0.552,0,1-0.448,1-1v0c0-0.552-0.448-1-1-1h-2C16.448,4,16,4.448,16,5z" />
+                                    <path
+                                        d="M7,24H6v-1c0-0.552-0.448-1-1-1H5c-0.552,0-1,0.448-1,1v1c0,1.105,0.895,2,2,2h1c0.552,0,1-0.448,1-1V25   C8,24.448,7.552,24,7,24z"
+                                    />
+                                    <path
+                                        d="M6,7V6h1c0.552,0,1-0.448,1-1V5c0-0.552-0.448-1-1-1H6C4.895,4,4,4.895,4,6v1c0,0.552,0.448,1,1,1H5C5.552,8,6,7.552,6,7z"
+                                    />
+                                    <path
+                                        d="M24,11l0,2.001c0,0.552,0.448,1,1,1h0c0.552,0,1-0.448,1-1V11c0-0.552-0.448-1-1-1h0C24.448,10,24,10.448,24,11z"
+                                    />
+                                </g>
+                                <g>
+                                    <path
+                                        d="M25,16h-1.764c-0.758,0-1.45-0.428-1.789-1.106l-0.171-0.342C21.107,14.214,20.761,14,20.382,14h-4.764   c-0.379,0-0.725,0.214-0.894,0.553l-0.171,0.342C14.214,15.572,13.521,16,12.764,16H11c-0.552,0-1,0.448-1,1v8c0,0.552,0.448,1,1,1   h14c0.552,0,1-0.448,1-1v-8C26,16.448,25.552,16,25,16z M18,25c-2.209,0-4-1.791-4-4c0-2.209,1.791-4,4-4s4,1.791,4,4   C22,23.209,20.209,25,18,25z"
+                                    />
+                                    <circle cx="18" cy="21" r="2" />
+                                </g>
+                            </svg>
+                        </i>
+                    </button>
+                </div>
+
+                <div class="c-ring-configurator__options js-ring-configurator-options">
+                    <p class="u-b3">Ring color:</p>
+                    <ul class="c-color-options js-ring-configurator-colors">
+                        <li>
+                            <button
+                                class="c-color-option js-ring-configurator-color is-active"
+                                data-color="#E7C473"
+                                data-model-object='["ring_body", "ring_crown"]'
+                            >
+                                <i class="c-color c-color--y-gold"></i>
+                                <span class="u-b3 u-uppercase">Yellow Gold</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="c-color-option js-ring-configurator-color"
+                                data-color="#E7E7E7"
+                                data-model-object='["ring_body", "ring_crown"]'
+                            >
+                                <i class="c-color c-color--w-gold"></i>
+                                <span class="u-b3 u-uppercase">White Gold</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="c-color-option js-ring-configurator-color"
+                                data-color="#E7B5AC"
+                                data-model-object='["ring_body", "ring_crown"]'
+                            >
+                                <i class="c-color c-color--r-gold"></i>
+                                <span class="u-b3 u-uppercase">Rose Gold</span>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <p class="u-b3">Gem color:</p>
+                    <ul class="c-color-options js-ring-configurator-colors">
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color is-active" data-color="#ffffff" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--w"></i>
+                                <span class="u-b3 u-uppercase">White</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color" data-color="#e34778" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--r"></i>
+                                <span class="u-b3 u-uppercase">Ruby</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color" data-color="#47d382" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--g"></i>
+                                <span class="u-b3 u-uppercase">Emerald</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color" data-color="#47a3e3" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--b"></i>
+                                <span class="u-b3 u-uppercase">Sapphire</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="c-ring-configurator__model">
-        <canvas class="js-ring-configurator-viewer c-ring-configurator__model-inner" style="width: 100%; height: 100%; display: block"></canvas>
-    </div>
+        <script>
+            window.ringOptions = {};
+        </script>
 
-    <div class="c-ring-configurator__text js-ring-configurator-engraving">
-        <p class="u-b3">Engraving text:</p>
-        <input name="fontText" id="fontText" type="text" maxlength="18"
-               class="c-input js-ring-configurator-engraving-text" data-engraving-object='["engraving"]'
-               value="Zaks x BFS 2023.">
-        <p class="u-b3">Engraving font family:</p>
-        <select name="fontFamily" id="fontFamily" class="c-select js-ring-configurator-engraving-font">
-            <option value="Inter">Inter</option>
-            <option value="Dancing Script">Dancing script</option>
-            <option value="Aboreto">Aboreto</option>
-        </select>
-        <p class="u-b3">Engraving size:</p>
-        <div class="c-range-wrapper">
-            <input name="fontSize" id="fontSize" type="range" min="80" step="2" max="120"
-                   class="c-range js-ring-configurator-engraving-size" value="100">
-            <span class="c-range-value u-text-center js-ring-configurator-engraving-size-value">100</span>
-        </div>
-
-
-    </div>
-    <div class="c-ring-configurator__actions">
-        <p class="u-b3">Scenes:</p>
-        <button class="c-action-button js-ring-configurator-scene"
-                data-camera-position='{"x": 0, "y": 3.65, "z": 2.75}'>
-            <span>Close-up</span>
-        </button>
-        <button class="c-action-button js-ring-configurator-scene"
-                data-camera-position='{"x": -0.52, "y": 3.73, "z": 7.89}'>
-            <span>Medium shot</span>
-        </button>
-        <button class="c-action-button js-ring-configurator-scene"
-                data-camera-position='{"x": -1, "y": 2.58, "z": 1.54}'>
-            <span>Engraving</span>
-        </button>
-        <button class="c-action-button c-action-button--active js-ring-configurator-scene"
-                data-camera-position='{"x": -2.5, "y": 5, "z": 5}'>
-            <span>Reset</span>
-        </button>
-        <span class="c-separator"></span>
-        <button class="c-action-button c-action-button--big is-active js-ring-configurator-screenshot">
-            <i>
-                <?xml version="1.0" ?>
-                <svg class="u-icon u-icon--screenshot" style="enable-background:new 0 0 30 30;" version="1.1"
-                     viewBox="0 0 30 30"
-                     xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M6,19V17c0-0.552-0.448-1-1-1H5c-0.552,0-1,0.448-1,1V19c0,0.552,0.448,1,1,1H5C5.552,20,6,19.552,6,19z"/><path
-                    d="M10,5L10,5c0,0.553,0.448,1,1,1H13c0.552,0,1-0.448,1-1V5c0-0.552-0.448-1-1-1H11C10.448,4,10,4.448,10,5z"/><path
-                    d="M5,14L5,14c0.553,0,1-0.448,1-1V11c0-0.552-0.448-1-1-1H5c-0.552,0-1,0.448-1,1V13C4,13.552,4.448,14,5,14z"/><path
-                    d="M23,6h1l0,1c0,0.552,0.448,1,1,1h0c0.552,0,1-0.448,1-1V6c0-1.105-0.895-2-2-2h-1c-0.552,0-1,0.448-1,1v0   C22,5.552,22.448,6,23,6z"/><path
-                    d="M16,5L16,5c0,0.552,0.448,1,1,1h2c0.552,0,1-0.448,1-1v0c0-0.552-0.448-1-1-1h-2C16.448,4,16,4.448,16,5z"/><path
-                    d="M7,24H6v-1c0-0.552-0.448-1-1-1H5c-0.552,0-1,0.448-1,1v1c0,1.105,0.895,2,2,2h1c0.552,0,1-0.448,1-1V25   C8,24.448,7.552,24,7,24z"/><path
-                    d="M6,7V6h1c0.552,0,1-0.448,1-1V5c0-0.552-0.448-1-1-1H6C4.895,4,4,4.895,4,6v1c0,0.552,0.448,1,1,1H5C5.552,8,6,7.552,6,7z"/><path
-                    d="M24,11l0,2.001c0,0.552,0.448,1,1,1h0c0.552,0,1-0.448,1-1V11c0-0.552-0.448-1-1-1h0C24.448,10,24,10.448,24,11z"/></g>
-                    <g><path d="M25,16h-1.764c-0.758,0-1.45-0.428-1.789-1.106l-0.171-0.342C21.107,14.214,20.761,14,20.382,14h-4.764   c-0.379,0-0.725,0.214-0.894,0.553l-0.171,0.342C14.214,15.572,13.521,16,12.764,16H11c-0.552,0-1,0.448-1,1v8c0,0.552,0.448,1,1,1   h14c0.552,0,1-0.448,1-1v-8C26,16.448,25.552,16,25,16z M18,25c-2.209,0-4-1.791-4-4c0-2.209,1.791-4,4-4s4,1.791,4,4   C22,23.209,20.209,25,18,25z"/>
-                        <circle cx="18" cy="21" r="2"/></g></svg>
-            </i>
-
-        </button>
-    </div>
-
-    <div class="c-ring-configurator__options js-ring-configurator-options">
-        <p class="u-b3">Ring color:</p>
-        <ul class="c-color-options js-ring-configurator-colors">
-            <li>
-                <button
-                    class="c-color-option js-ring-configurator-color is-active"
-                    data-color="#E7C473" data-model-object='["ring_body", "ring_crown"]'
-                >
-                    <i class="c-color c-color--y-gold"></i>
-                    <span class="u-b3 u-uppercase">Yellow Gold</span>
-                </button>
-            </li>
-            <li>
-                <button
-                    class="c-color-option js-ring-configurator-color"
-                    data-color="#E7E7E7" data-model-object='["ring_body", "ring_crown"]'
-                >
-                    <i class="c-color c-color--w-gold"></i>
-                    <span class="u-b3 u-uppercase">White Gold</span>
-                </button>
-            </li>
-            <li>
-                <button
-                    class="c-color-option js-ring-configurator-color"
-                    data-color="#E7B5AC" data-model-object='["ring_body", "ring_crown"]'
-                >
-                    <i class="c-color c-color--r-gold"></i>
-                    <span class="u-b3 u-uppercase">Rose Gold</span>
-                </button>
-            </li>
-        </ul>
-
-        <p class="u-b3">Gem color:</p>
-        <ul class="c-color-options js-ring-configurator-colors">
-            <li>
-                <button
-                    class="c-color-option js-ring-configurator-color is-active"
-                    data-color="#ffffff" data-model-object='["diamond"]'
-                >
-                    <i class="c-color c-color--w"></i>
-                    <span class="u-b3 u-uppercase">White</span>
-                </button>
-            </li>
-            <li>
-                <button
-                    class="c-color-option js-ring-configurator-color"
-                    data-color="#e34778" data-model-object='["diamond"]'
-                >
-                    <i class="c-color c-color--r"></i>
-                    <span class="u-b3 u-uppercase">Ruby</span>
-                </button>
-            </li>
-            <li>
-                <button
-                    class="c-color-option js-ring-configurator-color"
-                    data-color="#47d382" data-model-object='["diamond"]'
-                >
-                    <i class="c-color c-color--g"></i>
-                    <span class="u-b3 u-uppercase">Emerald</span>
-                </button>
-            </li>
-            <li>
-                <button
-                    class="c-color-option js-ring-configurator-color"
-                    data-color="#47a3e3" data-model-object='["diamond"]'
-                >
-                    <i class="c-color c-color--b"></i>
-                    <span class="u-b3 u-uppercase">Sapphire</span>
-                </button>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<script>
-    window.ringOptions = {};
-</script>
-
-<script type="text/javascript" src="../static/dist/vendor.js"></script>
-<script type="text/javascript" src="../static/dist/bundle.js"></script>
-</body>
+        <script type="text/javascript" src="../static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../static/dist/bundle.js"></script>
+    </body>
 </html>

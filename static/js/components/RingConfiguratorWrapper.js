@@ -99,6 +99,13 @@ export default class ModelConfiguratorWrapper {
             mouseAnimation: false,
             onLoad: () => {
                 this.init();
+
+                this.modelConfigurator.setCameraPosition({
+                    x: -2.5,
+                    y: 5,
+                    z: 5,
+                });
+
                 this.canvasElement.classList.add(this.DOM.states.isVisible);
             },
             onProgress: (progress) => {
