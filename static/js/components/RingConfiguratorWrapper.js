@@ -27,8 +27,10 @@ export default class ModelConfiguratorWrapper {
             // configurator
             canvas: ".js-ring-configurator-viewer",
             trigger: ".js-ring-configurator-trigger",
+            inputs: ".js-ring-configurator-inputs",
             close: ".js-ring-configurator-close",
-            options: ".js-ring-configurator-options",
+            ringMaterial: ".js-ring-configurator-ring-material",
+            gem: ".js-ring-configurator-gem",
             colors: ".js-ring-configurator-colors",
             colorOption: ".js-ring-configurator-color",
             screenshot: ".js-ring-configurator-screenshot",
@@ -65,7 +67,9 @@ export default class ModelConfiguratorWrapper {
         // configurator
         this.trigger = document.querySelector(this.DOM.trigger);
         this.close = document.querySelector(this.DOM.close);
-        this.options = document.querySelector(this.DOM.options);
+        this.inputs = document.querySelector(this.DOM.inputs);
+        this.gem = document.querySelector(this.DOM.gem);
+        this.ringMaterial = document.querySelector(this.DOM.ringMaterial);
         this.engraving = document.querySelector(this.DOM.engraving);
         this.engravingText = document.querySelector(this.DOM.engravingText);
         this.engravingFont = document.querySelector(this.DOM.engravingFont);
@@ -276,6 +280,9 @@ export default class ModelConfiguratorWrapper {
                     y: "-50%",
                     ease: "expo.inOut",
                     duration: 0.6,
+                    onComplete: () => {
+                        this.inputs.classList.add(this.DOM.states.isVisible);
+                    },
                 },
                 "start+=1.2",
             );
@@ -341,7 +348,8 @@ export default class ModelConfiguratorWrapper {
 
     keyboardShortcut() {
         if (this.body.dataset.showConfigurator === "false") {
-            this.options.remove();
+            this.ringMaterial.remove();
+            this.gem.remove();
             this.engraving.remove();
         }
 
@@ -392,6 +400,9 @@ export default class ModelConfiguratorWrapper {
 
         this.close.addEventListener("click", () => {
             this.body.classList.remove(this.DOM.states.optionsActive);
+            this.inputs.classList.remove(this.DOM.states.isVisible);
+            this.canvasElement.classList.remove(this.DOM.states.isZoomed);
+
             this.outroTl.timeScale(1.5).reverse();
         });
     }

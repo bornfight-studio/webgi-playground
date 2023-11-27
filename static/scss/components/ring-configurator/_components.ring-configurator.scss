@@ -15,6 +15,12 @@
 }
 
 .c-ring-configurator {
+    &__actions,
+    &__gem,
+    &__engraving {
+        opacity: 0;
+    }
+
     &__configurator-inputs {
         position: fixed;
         top: 0;
@@ -25,7 +31,12 @@
         align-items: flex-end;
         justify-content: flex-start;
         padding: get-vw(30px);
-        //opacity: 0;
+        opacity: 0;
+        transition: 0.3s;
+
+        &.is-visible {
+            opacity: 1;
+        }
     }
 
     &__frame {

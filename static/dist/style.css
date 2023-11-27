@@ -894,6 +894,9 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   z-index: 1;
 }
 
+.c-ring-configurator__actions, .c-ring-configurator__gem, .c-ring-configurator__engraving {
+  opacity: 0;
+}
 .c-ring-configurator__configurator-inputs {
   position: fixed;
   top: 0;
@@ -904,6 +907,11 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   align-items: flex-end;
   justify-content: flex-start;
   padding: 2.0833333333vw;
+  opacity: 0;
+  transition: 0.3s;
+}
+.c-ring-configurator__configurator-inputs.is-visible {
+  opacity: 1;
 }
 .c-ring-configurator__frame {
   position: absolute;

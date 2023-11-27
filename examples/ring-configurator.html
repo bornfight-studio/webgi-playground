@@ -55,7 +55,43 @@
             </div>
 
             <div class="c-ring-configurator__configurator-inputs js-ring-configurator-inputs">
-                <div class="c-ring-configurator__text js-ring-configurator-engraving">
+                <div class="c-ring-configurator__ring-material js-ring-configurator-ring-material">
+                    <p class="u-b3">Ring color:</p>
+                    <ul class="c-color-options js-ring-configurator-colors">
+                        <li>
+                            <button
+                                    class="c-color-option js-ring-configurator-color is-active"
+                                    data-color="#E7C473"
+                                    data-model-object='["ring_body", "ring_crown"]'
+                            >
+                                <i class="c-color c-color--y-gold"></i>
+                                <span class="u-b3 u-uppercase">Yellow Gold</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                    class="c-color-option js-ring-configurator-color"
+                                    data-color="#E7E7E7"
+                                    data-model-object='["ring_body", "ring_crown"]'
+                            >
+                                <i class="c-color c-color--w-gold"></i>
+                                <span class="u-b3 u-uppercase">White Gold</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                    class="c-color-option js-ring-configurator-color"
+                                    data-color="#E7B5AC"
+                                    data-model-object='["ring_body", "ring_crown"]'
+                            >
+                                <i class="c-color c-color--r-gold"></i>
+                                <span class="u-b3 u-uppercase">Rose Gold</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="c-ring-configurator__engraving js-ring-configurator-engraving">
                     <p class="u-b3">Engraving text:</p>
                     <input
                         name="fontText"
@@ -86,6 +122,36 @@
                         />
                         <span class="c-range-value u-text-center js-ring-configurator-engraving-size-value">100</span>
                     </div>
+                </div>
+
+                <div class="c-ring-configurator__gem js-ring-configurator-gem">
+                    <p class="u-b3">Gem color:</p>
+                    <ul class="c-color-options js-ring-configurator-colors">
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color is-active" data-color="#ffffff" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--w"></i>
+                                <span class="u-b3 u-uppercase">White</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color" data-color="#e34778" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--r"></i>
+                                <span class="u-b3 u-uppercase">Ruby</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color" data-color="#47d382" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--g"></i>
+                                <span class="u-b3 u-uppercase">Emerald</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="c-color-option js-ring-configurator-color" data-color="#47a3e3" data-model-object='["diamond"]'>
+                                <i class="c-color c-color--b"></i>
+                                <span class="u-b3 u-uppercase">Sapphire</span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
 
                 <div class="c-ring-configurator__actions js-ring-configurator-actions">
@@ -149,70 +215,6 @@
                             </svg>
                         </i>
                     </button>
-                </div>
-
-                <div class="c-ring-configurator__options js-ring-configurator-options">
-                    <p class="u-b3">Ring color:</p>
-                    <ul class="c-color-options js-ring-configurator-colors">
-                        <li>
-                            <button
-                                class="c-color-option js-ring-configurator-color is-active"
-                                data-color="#E7C473"
-                                data-model-object='["ring_body", "ring_crown"]'
-                            >
-                                <i class="c-color c-color--y-gold"></i>
-                                <span class="u-b3 u-uppercase">Yellow Gold</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="c-color-option js-ring-configurator-color"
-                                data-color="#E7E7E7"
-                                data-model-object='["ring_body", "ring_crown"]'
-                            >
-                                <i class="c-color c-color--w-gold"></i>
-                                <span class="u-b3 u-uppercase">White Gold</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="c-color-option js-ring-configurator-color"
-                                data-color="#E7B5AC"
-                                data-model-object='["ring_body", "ring_crown"]'
-                            >
-                                <i class="c-color c-color--r-gold"></i>
-                                <span class="u-b3 u-uppercase">Rose Gold</span>
-                            </button>
-                        </li>
-                    </ul>
-
-                    <p class="u-b3">Gem color:</p>
-                    <ul class="c-color-options js-ring-configurator-colors">
-                        <li>
-                            <button class="c-color-option js-ring-configurator-color is-active" data-color="#ffffff" data-model-object='["diamond"]'>
-                                <i class="c-color c-color--w"></i>
-                                <span class="u-b3 u-uppercase">White</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button class="c-color-option js-ring-configurator-color" data-color="#e34778" data-model-object='["diamond"]'>
-                                <i class="c-color c-color--r"></i>
-                                <span class="u-b3 u-uppercase">Ruby</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button class="c-color-option js-ring-configurator-color" data-color="#47d382" data-model-object='["diamond"]'>
-                                <i class="c-color c-color--g"></i>
-                                <span class="u-b3 u-uppercase">Emerald</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button class="c-color-option js-ring-configurator-color" data-color="#47a3e3" data-model-object='["diamond"]'>
-                                <i class="c-color c-color--b"></i>
-                                <span class="u-b3 u-uppercase">Sapphire</span>
-                            </button>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
