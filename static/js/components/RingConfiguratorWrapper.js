@@ -92,7 +92,7 @@ export default class ModelConfiguratorWrapper {
         // configurator
         this.modelConfigurator = new RingConfigurator({
             elementClass: this.DOM.canvas,
-            modelUrl: "../static/models/ring-engraving-v7.glb",
+            modelUrl: "../static/models/pixotronics-bfs-v2.glb",
             ringOptions: window.ringOptions,
             mouseAnimation: false,
             onLoad: () => {
