@@ -59,7 +59,7 @@ export default class NavigationController {
             console.log("Navigation init()");
             this.navigationController();
         } else {
-            console.error(`${this.DOM.navigation} does not exist in the DOM!`);
+            console.warn(`${this.DOM.navigation} does not exist in the DOM!`);
         }
     }
 
