@@ -881,7 +881,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 
 #c-ring-configurator {
   --text-color: #521400;
-  --bg-color: #F1EFEB;
+  --bg-color: #e2e2e2;
   --font-primary: PP Fragment Sans, sans-serif;
   --font-secondary: OT Jubilee Platinum, serif;
   color: var(--text-color);
@@ -1010,6 +1010,17 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
     /* 2 */
     background-color: var(--bg-color);
   }
+}
+.c-ring-configurator__model-inner {
+  opacity: 0;
+  transform: scale(0.3) translateY(-50%);
+  transition: opacity 0.25s linear, transform 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.c-ring-configurator__model-inner.is-visible {
+  opacity: 1;
+}
+.c-ring-configurator__model-inner.is-zoomed {
+  transform: scale(1) translateY(0%);
 }
 
 .u-split-text-char {

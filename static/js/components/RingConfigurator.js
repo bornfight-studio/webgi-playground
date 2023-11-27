@@ -1,4 +1,4 @@
-import { ViewerApp, AssetManagerPlugin, addBasePlugins, SimpleTextPlugin } from "webgi";
+import {ViewerApp, AssetManagerPlugin, addBasePlugins, SimpleTextPlugin} from "webgi";
 import gsap from "gsap";
 
 export default class RingConfigurator {
@@ -8,8 +8,10 @@ export default class RingConfigurator {
             modelUrl: "",
             envUrl: "",
             mouseAnimation: false,
-            onLoad: () => {},
-            onProgress: () => {},
+            onLoad: () => {
+            },
+            onProgress: () => {
+            },
         };
 
         this.defaults = Object.assign({}, _defaults, options);
@@ -57,7 +59,8 @@ export default class RingConfigurator {
         }
 
         setupViewer().then((r) => {
-            this.manager.addFromPath(this.defaults.modelUrl).then((r) => {});
+            this.manager.addFromPath(this.defaults.modelUrl).then((r) => {
+            });
 
             this.importer.addEventListener("onProgress", (ev) => {
                 this.onProgress((ev.loaded / ev.total) * 100);
@@ -137,10 +140,10 @@ export default class RingConfigurator {
             ease: "expo.inOut",
             duration: 1.2,
             onStart: () => {
-                camera.setCameraOptions({ controlsEnabled: false });
+                camera.setCameraOptions({controlsEnabled: false});
             },
             onComplete: () => {
-                camera.setCameraOptions({ controlsEnabled: true });
+                camera.setCameraOptions({controlsEnabled: true});
             },
             onUpdate: () => {
                 camera.position.set(position.x, position.y, position.z);

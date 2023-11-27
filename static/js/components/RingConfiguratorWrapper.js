@@ -1,6 +1,6 @@
 import RingConfigurator from "./RingConfigurator";
 import gsap from "gsap";
-import {SplitText} from "gsap/SplitText";
+import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(SplitText);
 
@@ -44,6 +44,7 @@ export default class ModelConfiguratorWrapper {
                 isActive: "is-active",
                 isVisible: "is-visible",
                 optionsActive: "has-options-active",
+                isZoomed: "is-zoomed",
             },
         };
 
@@ -74,6 +75,8 @@ export default class ModelConfiguratorWrapper {
         this.screenshot = document.querySelector(this.DOM.screenshot);
         this.scenes = document.querySelectorAll(this.DOM.scene);
 
+        this.canvasElement = document.querySelector(this.DOM.canvas);
+
         // timeline
         this.introTl = gsap.timeline({
             delay: 0,
@@ -88,15 +91,15 @@ export default class ModelConfiguratorWrapper {
             },
         });
 
-
         // configurator
         this.modelConfigurator = new RingConfigurator({
             elementClass: this.DOM.canvas,
-            modelUrl: "../static/models/pixotronics-bfs-v2.glb",
+            modelUrl: "../static/models/pixotronics-bfs-v3.glb",
             ringOptions: window.ringOptions,
             mouseAnimation: false,
             onLoad: () => {
                 this.init();
+                this.canvasElement.classList.add(this.DOM.states.isVisible);
             },
             onProgress: (progress) => {
                 gsap.to(this.frameBottom, {
@@ -105,7 +108,7 @@ export default class ModelConfiguratorWrapper {
 
                     onComplete: () => {
                         this.introTl.play();
-                    }
+                    },
                 });
             },
         });
@@ -134,103 +137,141 @@ export default class ModelConfiguratorWrapper {
             charsClass: "u-split-text-char",
         });
 
-        this.introTl.add("start")
+        this.introTl
+            .add("start")
             .to([this.frameLeft, this.frameRight], {
                 scaleY: 1,
                 duration: 1,
-                ease: "expo.inOut"
+                ease: "expo.inOut",
             })
             .to([this.frameTopRight, this.frameTopLeft], {
                 scaleX: 1,
                 duration: 0.8,
-                ease: "expo.inOut"
+                ease: "expo.inOut",
             })
-            .fromTo(logoSplit.chars, {
-                autoAlpha: 0,
-                yPercent: 110,
-            },{
-                duration: 1,
-                autoAlpha: 1,
-                yPercent: 0,
-                ease: "expo.out",
-                stagger: {
-                    from: "center",
-                    each: 0.075,
+            .fromTo(
+                logoSplit.chars,
+                {
+                    autoAlpha: 0,
+                    yPercent: 110,
                 },
-                onStart: () => {
-                    this.logo.classList.add(this.DOM.states.isVisible);
-                }
-            }, "start+=0.4")
-            .to(this.tagline, {
-                autoAlpha: 1,
-                y: "0%",
-                ease: "expo.inOut",
-                duration: 0.6,
-            }, "start+=1.2")
-            .to(this.cta, {
-                autoAlpha: 1,
-                y: "0%",
-                ease: "expo.inOut",
-                duration: 0.8,
-            }, "start+=1.4");
+                {
+                    duration: 1,
+                    autoAlpha: 1,
+                    yPercent: 0,
+                    ease: "expo.out",
+                    stagger: {
+                        from: "center",
+                        each: 0.075,
+                    },
+                    onStart: () => {
+                        this.logo.classList.add(this.DOM.states.isVisible);
+                    },
+                },
+                "start+=0.4",
+            )
+            .to(
+                this.tagline,
+                {
+                    autoAlpha: 1,
+                    y: "0%",
+                    ease: "expo.inOut",
+                    duration: 0.6,
+                },
+                "start+=1.2",
+            )
+            .to(
+                this.cta,
+                {
+                    autoAlpha: 1,
+                    y: "0%",
+                    ease: "expo.inOut",
+                    duration: 0.8,
+                },
+                "start+=1.4",
+            );
 
-        this.outroTl.add("start")
-            .to([this.frameTopRight, this.frameTopLeft], {
-                scaleX: 0,
-                duration: 0.6,
-                ease: "expo.in"
-            }, "start")
+        this.outroTl
+            .add("start")
+            .to(
+                [this.frameTopRight, this.frameTopLeft],
+                {
+                    scaleX: 0,
+                    duration: 0.6,
+                    ease: "expo.in",
+                },
+                "start",
+            )
             .to([this.frameRight, this.frameLeft], {
                 scaleY: 0,
                 duration: 0.8,
-                ease: "expo.inOut"
+                ease: "expo.inOut",
             })
             .to(this.frameBottom, {
                 scaleX: 0,
                 duration: 1,
                 ease: "expo.inOut",
             })
-            .to(logoSplit.chars,{
-                duration: 1,
-                autoAlpha: 0,
-                yPercent: -100,
-                ease: "expo.inOut",
-                stagger: {
-                    from: "center",
-                    each: 0.075,
+            .to(
+                logoSplit.chars,
+                {
+                    duration: 1,
+                    autoAlpha: 0,
+                    yPercent: -100,
+                    ease: "expo.inOut",
+                    stagger: {
+                        from: "center",
+                        each: 0.075,
+                    },
+                    onStart: () => {
+                        this.logo.classList.add(this.DOM.states.isVisible);
+                    },
                 },
-                onStart: () => {
-                    this.logo.classList.add(this.DOM.states.isVisible);
-                }
-            }, "start+=0.4")
-            .fromTo(logoSmallSplit.chars, {
-                autoAlpha: 0,
-                yPercent: 110,
-            },{
-                duration: 1,
-                autoAlpha: 1,
-                yPercent: 0,
-                ease: "expo.inOut",
-                stagger: {
-                    from: "center",
-                    each: 0.075,
+                "start+=0.4",
+            )
+            .fromTo(
+                logoSmallSplit.chars,
+                {
+                    autoAlpha: 0,
+                    yPercent: 110,
                 },
-                onStart: () => {
-                    this.logoSmall.classList.add(this.DOM.states.isVisible);
-                }
-            }, "start+=0.5")
-            .to(this.tagline, {
-                autoAlpha: 0,
-                y: "-50%",
-                ease: "expo.inOut",
-                duration: 0.4,
-            }, "start+=1")
-            .to(this.cta, {
-                autoAlpha: 0,
-                y: "-50%",
-                ease: "expo.inOut",
-                duration: 0.6,
-            }, "start+=1.2");
+                {
+                    duration: 1,
+                    autoAlpha: 1,
+                    yPercent: 0,
+                    ease: "expo.inOut",
+                    stagger: {
+                        from: "center",
+                        each: 0.075,
+                    },
+                    onStart: () => {
+                        this.logoSmall.classList.add(this.DOM.states.isVisible);
+
+                        this.canvasElement.classList.add(this.DOM.states.isZoomed);
+                    },
+                },
+                "start+=0.5",
+            )
+            .to(
+                this.tagline,
+                {
+                    autoAlpha: 0,
+                    y: "-50%",
+                    ease: "expo.inOut",
+                    duration: 0.4,
+                },
+                "start+=1",
+            )
+            .to(
+                this.cta,
+                {
+                    autoAlpha: 0,
+                    y: "-50%",
+                    ease: "expo.inOut",
+                    duration: 0.6,
+                },
+                "start+=1.2",
+            );
     }
 
     colorController() {
@@ -309,13 +350,12 @@ export default class ModelConfiguratorWrapper {
     }
 
     takeScreenshot(fileName) {
-        const canvasElement = document.querySelector(this.DOM.canvas);
         const MIME_TYPE = "image/png";
 
         this.screenshot.addEventListener("click", () => {
-            var imgURL = canvasElement.toDataURL(MIME_TYPE);
+            const imgURL = this.canvasElement.toDataURL(MIME_TYPE);
 
-            var dlLink = document.createElement("a");
+            const dlLink = document.createElement("a");
             dlLink.classList.add("is-visually-hidden");
             dlLink.download = fileName;
             dlLink.href = imgURL;
@@ -341,11 +381,11 @@ export default class ModelConfiguratorWrapper {
     configuratorToggler() {
         this.trigger.addEventListener("click", () => {
             this.outroTl.play();
-        })
+        });
 
         this.close.addEventListener("click", () => {
             this.body.classList.remove(this.DOM.states.optionsActive);
             this.outroTl.timeScale(1.5).reverse();
-        })
+        });
     }
 }
