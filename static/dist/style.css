@@ -1171,7 +1171,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   transition-delay: 0.2s;
 }
 .c-ring-configurator__input-label {
-  padding-bottom: 12px;
+  padding-bottom: 5px;
   opacity: 0.5;
 }
 .c-ring-configurator__input-block {
@@ -1434,12 +1434,34 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   -webkit-appearance: none;
   border: 0;
   border-radius: 0;
+  padding-right: 0;
+  padding-left: 0;
   outline: 0;
   background: none;
   box-shadow: none;
   border-bottom: 1px solid #a48e86;
   padding-bottom: 7px;
+  padding-top: 7px;
   line-height: 1.7;
+}
+
+.c-select-wrapper {
+  position: relative;
+}
+.c-select-wrapper:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  transform: translateY(-75%) rotate(-45deg);
+  right: 3px;
+  width: 7px;
+  height: 7px;
+  border-left: 1px solid #dea593;
+  border-bottom: 1px solid #dea593;
+}
+
+.c-select {
+  padding-right: 30px;
 }
 
 .c-ring-configurator-header {
