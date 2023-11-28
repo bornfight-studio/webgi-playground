@@ -756,7 +756,7 @@ input[type=range]::-moz-focus-outer {
   --b0: clamp(1rem, 0.21vw + 0.94rem, 1.13rem);
   --b1: clamp(0.88rem, 0.21vw + 0.81rem, 1rem);
   --b2: clamp(0.81rem, 0.21vw + 0.75rem, 0.94rem);
-  --b3: clamp(0.75rem, 0.21vw + 0.69rem, 0.88rem);
+  --b3: clamp(0.63rem, 0.31vw + 0.53rem, 0.81rem);
   --b4: clamp(0.69rem, 0.1vw + 0.66rem, 0.75rem);
   --breakpoint-sm: 480px;
   --breakpoint-md: 800px;
@@ -890,6 +890,12 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   font-family: "Roboto", sans-serif;
   line-height: 133%;
   letter-spacing: -0.0066666667em;
+}
+
+.u-b3 {
+  font-size: var(--b3);
+  font-family: "Roboto", sans-serif;
+  line-height: 133%;
 }
 
 .u-font-primary {
@@ -1121,6 +1127,9 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 .c-ring-configurator__actions, .c-ring-configurator__gem, .c-ring-configurator__engraving {
   opacity: 0;
 }
+.c-ring-configurator__engraving {
+  gap: 13px;
+}
 .c-ring-configurator__configurator-inputs {
   position: fixed;
   top: 0;
@@ -1164,6 +1173,12 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 .c-ring-configurator__input-label {
   padding-bottom: 12px;
   opacity: 0.5;
+}
+.c-ring-configurator__input-block {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .c-ring-configurator__configurator-inputs-tabs {
   display: flex;
@@ -1412,6 +1427,19 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 }
 .c-color--b {
   background-color: #0071c3;
+}
+
+.c-input,
+.c-select {
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background: none;
+  box-shadow: none;
+  border-bottom: 1px solid #a48e86;
+  padding-bottom: 7px;
+  line-height: 1.7;
 }
 
 .c-ring-configurator-header {

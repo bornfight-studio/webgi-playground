@@ -58,6 +58,12 @@
     letter-spacing: math.div(-0.1, 15) * 1em;
 }
 
+@mixin b3 {
+    font-size: var(--b3);
+    font-family: $font-secondary;
+    line-height: 133%;
+}
+
 .u-a5 {
     @include a5;
 }
@@ -88,6 +94,10 @@
 
 .u-b2 {
     @include b2;
+}
+
+.u-b3 {
+    @include b3;
 }
 
 .u-font-primary {

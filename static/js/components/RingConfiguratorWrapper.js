@@ -131,7 +131,6 @@ export default class ModelConfiguratorWrapper {
     }
 
     init() {
-        console.log(123);
         if (this.colors && this.colors.length > 0) {
             this.colorController();
             this.keyboardShortcut();

@@ -21,6 +21,10 @@
         opacity: 0;
     }
 
+    &__engraving {
+        gap: 13px;
+    }
+
     &__configurator-inputs {
         position: fixed;
         top: 0;
@@ -69,6 +73,13 @@
     &__input-label {
         padding-bottom: 12px;
         opacity: 0.5;
+    }
+
+    &__input-block {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     &__configurator-inputs-tabs {
@@ -299,4 +310,17 @@
     &--b {
         background-color: #0071c3;
     }
+}
+
+.c-input,
+.c-select {
+    -webkit-appearance: none;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    background: none;
+    box-shadow: none;
+    border-bottom: 1px solid #a48e86;
+    padding-bottom: 7px;
+    line-height: 1.7;
 }
