@@ -42,7 +42,7 @@
     }
 
     &__configurator-inputs-inner {
-        height: get-vw(100px);
+        height: get-vw(110px);
         width: 100%;
         position: relative;
     }
@@ -66,6 +66,11 @@
         }
     }
 
+    &__input-label {
+        padding-bottom: 12px;
+        opacity: 0.5;
+    }
+
     &__configurator-inputs-tabs {
         display: flex;
         flex-wrap: wrap;
@@ -86,6 +91,7 @@
         opacity: 0.5;
         transition: opacity 0.25s;
         pointer-events: auto;
+        padding-bottom: 5px;
 
         &:after {
             content: "";

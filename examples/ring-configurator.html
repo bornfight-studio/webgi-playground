@@ -86,7 +86,7 @@
 
                 <div class="c-ring-configurator__configurator-inputs-inner">
                     <div class="c-ring-configurator__input-wrapper c-ring-configurator__ring-material js-ring-configurator-input-wrapper is-active">
-                        <p class="u-b3">Gold type:</p>
+                        <p class="u-b3 c-ring-configurator__input-label">Gold type:</p>
                         <ul class="c-color-options js-ring-configurator-colors">
                             <li>
                                 <button
@@ -122,40 +122,48 @@
                     </div>
 
                     <div class="c-ring-configurator__input-wrapper c-ring-configurator__engraving js-ring-configurator-input-wrapper">
-                        <p class="u-b3">Engraving text:</p>
-                        <input
-                            name="fontText"
-                            id="fontText"
-                            type="text"
-                            maxlength="18"
-                            class="c-input js-ring-configurator-engraving-text"
-                            data-engraving-object='["engraving"]'
-                            value="Zaks x BFS 2023."
-                        />
-                        <p class="u-b3">Engraving font family:</p>
-                        <select name="fontFamily" id="fontFamily" class="c-select js-ring-configurator-engraving-font">
-                            <option value="Inter">Inter</option>
-                            <option value="Dancing Script">Dancing script</option>
-                            <option value="Aboreto">Aboreto</option>
-                        </select>
-                        <p class="u-b3">Engraving size:</p>
-                        <div class="c-range-wrapper">
+                        <div class="c-ring-configurator__input-block">
+                            <p class="u-b3 c-ring-configurator__input-label">Text:</p>
                             <input
-                                name="fontSize"
-                                id="fontSize"
-                                type="range"
-                                min="80"
-                                step="2"
-                                max="120"
-                                class="c-range js-ring-configurator-engraving-size"
-                                value="100"
+                                name="fontText"
+                                id="fontText"
+                                type="text"
+                                maxlength="18"
+                                class="c-input js-ring-configurator-engraving-text"
+                                data-engraving-object='["engraving"]'
+                                value="Zaks x BFS 2023."
                             />
-                            <span class="c-range-value u-text-center js-ring-configurator-engraving-size-value">100</span>
+                        </div>
+
+                        <div class="c-ring-configurator__input-block">
+                            <p class="u-b3 c-ring-configurator__input-label">Typeface:</p>
+                            <select name="fontFamily" id="fontFamily" class="c-select js-ring-configurator-engraving-font">
+                                <option value="Inter">Inter</option>
+                                <option value="Dancing Script">Dancing script</option>
+                                <option value="Aboreto">Aboreto</option>
+                            </select>
+                        </div>
+
+                        <div class="c-ring-configurator__input-block">
+                            <p class="u-b3 c-ring-configurator__input-label">Size:</p>
+                            <div class="c-range-wrapper">
+                                <input
+                                    name="fontSize"
+                                    id="fontSize"
+                                    type="range"
+                                    min="80"
+                                    step="2"
+                                    max="120"
+                                    class="c-range js-ring-configurator-engraving-size"
+                                    value="100"
+                                />
+                                <span class="c-range-value u-text-center js-ring-configurator-engraving-size-value">100</span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="c-ring-configurator__input-wrapper c-ring-configurator__gem js-ring-configurator-input-wrapper">
-                        <p class="u-b3">Gem color:</p>
+                        <p class="u-b3 c-ring-configurator__input-label">Gem color:</p>
                         <ul class="c-color-options js-ring-configurator-colors">
                             <li>
                                 <button

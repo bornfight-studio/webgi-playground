@@ -51,6 +51,7 @@ export default class ModelConfiguratorWrapper {
 
         // general
         this.body = document.body;
+        this.isLoaded = false;
 
         // UI
         this.logo = document.querySelector(this.DOM.logo);
@@ -100,30 +101,37 @@ export default class ModelConfiguratorWrapper {
             ringOptions: window.ringOptions,
             mouseAnimation: false,
             onLoad: () => {
-                this.init();
+                if (!this.isLoaded) {
+                    this.init();
 
-                this.modelConfigurator.setCameraPosition({
-                    x: -2.5,
-                    y: 5,
-                    z: 5,
-                });
+                    this.modelConfigurator.setCameraPosition({
+                        x: -2.5,
+                        y: 5,
+                        z: 5,
+                    });
 
-                this.canvasElement.classList.add(this.DOM.states.isVisible);
+                    this.canvasElement.classList.add(this.DOM.states.isVisible);
+
+                    this.isLoaded = true;
+                }
             },
             onProgress: (progress) => {
-                gsap.to(this.frameBottom, {
-                    duration: 0.4,
-                    scaleX: progress / 100,
+                if (!this.isLoaded) {
+                    gsap.to(this.frameBottom, {
+                        duration: 0.4,
+                        scaleX: progress / 100,
 
-                    onComplete: () => {
-                        this.introTl.play();
-                    },
-                });
+                        onComplete: () => {
+                            this.introTl.play();
+                        },
+                    });
+                }
             },
         });
     }
 
     init() {
+        console.log(123);
         if (this.colors && this.colors.length > 0) {
             this.colorController();
             this.keyboardShortcut();
