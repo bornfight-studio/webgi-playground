@@ -1128,7 +1128,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   opacity: 0;
 }
 .c-ring-configurator__engraving {
-  gap: 13px;
+  gap: 15px;
 }
 .c-ring-configurator__configurator-inputs {
   position: fixed;
@@ -1462,6 +1462,60 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 
 .c-select {
   padding-right: 30px;
+}
+
+.c-range-wrapper {
+  padding: 10px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.47);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.c-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.c-range::-moz-range-track {
+  background: #dea593;
+  height: 8px;
+  border-radius: 100px;
+}
+.c-range::-webkit-slider-runnable-track {
+  background: #dea593;
+  height: 8px;
+  border-radius: 100px;
+}
+.c-range::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  transform: translateY(-2px);
+  background-color: #4b2013;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+.c-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  transform: translateY(-2px);
+  background-color: #4b2013;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+.c-range:focus {
+  outline: none;
+}
+
+.c-range-value {
+  min-width: 50px;
+  text-align: right;
+  padding-top: 0.2em;
 }
 
 .c-ring-configurator-header {

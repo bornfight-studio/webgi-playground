@@ -22,7 +22,7 @@
     }
 
     &__engraving {
-        gap: 13px;
+        gap: 15px;
     }
 
     &__configurator-inputs {
@@ -346,4 +346,63 @@
 
 .c-select {
     padding-right: 30px;
+}
+
+.c-range-wrapper {
+    padding: 10px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.47);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+.c-range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+
+    &::-moz-range-track {
+        background: #dea593;
+        height: 8px;
+        border-radius: 100px;
+    }
+
+    &::-webkit-slider-runnable-track {
+        background: #dea593;
+        height: 8px;
+        border-radius: 100px;
+    }
+
+    &::-moz-range-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        transform: translateY(-2px);
+        background-color: #4b2013;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        transform: translateY(-2px);
+        background-color: #4b2013;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.c-range-value {
+    min-width: 50px;
+    text-align: right;
+    padding-top: 0.2em;
 }

@@ -354,7 +354,10 @@ export default class ModelConfiguratorWrapper {
         this.engravingSize.addEventListener("change", (ev) => {
             size = ev.target.value;
             this.modelConfigurator.setEngravingText(engravingObject, text, font, size);
-            this.engravingSizeValue.innerText = size;
+        });
+
+        this.engravingSize.addEventListener("input", (ev) => {
+            this.engravingSizeValue.innerText = String(ev.target.value).padStart(3, "0");
         });
     }
 
