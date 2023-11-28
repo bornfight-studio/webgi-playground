@@ -1513,9 +1513,9 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 }
 
 .c-range-value {
-  min-width: 50px;
+  min-width: 35px;
   text-align: right;
-  padding-top: 0.2em;
+  padding-top: 0.1em;
 }
 
 .c-ring-configurator-header {
