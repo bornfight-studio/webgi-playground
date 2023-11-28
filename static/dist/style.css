@@ -1149,9 +1149,14 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   opacity: 1;
 }
 .c-ring-configurator__configurator-inputs-inner {
-  height: 7.6388888889vw;
+  height: 110px;
   width: 100%;
   position: relative;
+}
+@media (max-width: 1440px) {
+  .c-ring-configurator__configurator-inputs-inner {
+    height: 110px;
+  }
 }
 .c-ring-configurator__input-wrapper {
   position: absolute;
@@ -1368,6 +1373,16 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   transform: scale(0.3) translateY(-50%);
   transition: opacity 0.25s linear, transform 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   cursor: grab;
+}
+@media (max-width: 800px) {
+  .c-ring-configurator__model-inner {
+    transform: scale(0.5) translateY(-40%);
+  }
+}
+@media (max-width: 480px) {
+  .c-ring-configurator__model-inner {
+    transform: scale(0.7) translateY(-30%);
+  }
 }
 .c-ring-configurator__model-inner:active {
   cursor: grabbing;

@@ -80,6 +80,8 @@ export default class ModelConfiguratorWrapper {
 
         this.canvasElement = document.querySelector(this.DOM.canvas);
 
+        this.matchMedia = gsap.matchMedia();
+
         // timeline
         this.introTl = gsap.timeline({
             delay: 0,
@@ -104,11 +106,29 @@ export default class ModelConfiguratorWrapper {
                 if (!this.isLoaded) {
                     this.init();
 
-                    this.modelConfigurator.setCameraPosition({
+                    let camPosition = {
                         x: -2.5,
                         y: 5,
                         z: 5,
+                    };
+
+                    this.matchMedia.add("(max-width: 800px)", () => {
+                        camPosition = {
+                            x: -2.5,
+                            y: 5,
+                            z: 9,
+                        };
                     });
+
+                    this.matchMedia.add("(max-width: 490px)", () => {
+                        camPosition = {
+                            x: -1.5,
+                            y: 5,
+                            z: 15,
+                        };
+                    });
+
+                    this.modelConfigurator.setCameraPosition(camPosition);
 
                     this.canvasElement.classList.add(this.DOM.states.isVisible);
 
@@ -414,7 +434,16 @@ export default class ModelConfiguratorWrapper {
             scene.addEventListener("click", (ev) => {
                 this.setActiveClass(ev, this.scenes);
 
-                const cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraPosition);
+                let cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraPosition);
+
+                this.matchMedia.add("(max-width: 800px)", () => {
+                    cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraTabletPosition);
+                });
+
+                this.matchMedia.add("(max-width: 490px)", () => {
+                    cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraMobilePosition);
+                });
+
                 this.modelConfigurator.setCameraPosition(cameraPosition);
             });
         });

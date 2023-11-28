@@ -46,9 +46,13 @@
     }
 
     &__configurator-inputs-inner {
-        height: get-vw(110px);
+        height: 110px;
         width: 100%;
         position: relative;
+
+        @include mq(xl) {
+            height: 110px;
+        }
     }
 
     &__input-wrapper {
@@ -239,6 +243,14 @@
         transform: scale(0.3) translateY(-50%);
         transition: opacity 0.25s linear, transform 1.2s getTransitionEasing("ease-in-out-quad");
         cursor: grab;
+
+        @include mq(md){
+            transform: scale(0.5) translateY(-40%);
+        }
+
+        @include mq(sm){
+            transform: scale(0.7) translateY(-30%);
+        }
 
         &:active {
             cursor: grabbing;
