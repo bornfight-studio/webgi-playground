@@ -1134,6 +1134,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   padding: 2.0833333333vw;
   opacity: 0;
   transition: 0.3s;
+  pointer-events: none;
 }
 .c-ring-configurator__configurator-inputs.is-visible {
   opacity: 1;
@@ -1176,6 +1177,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   position: relative;
   opacity: 0.5;
   transition: opacity 0.25s;
+  pointer-events: auto;
 }
 .c-ring-configurator__configurator-inputs-tab:after {
   content: "";
@@ -1345,6 +1347,10 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   opacity: 0;
   transform: scale(0.3) translateY(-50%);
   transition: opacity 0.25s linear, transform 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  cursor: grab;
+}
+.c-ring-configurator__model-inner:active {
+  cursor: grabbing;
 }
 .c-ring-configurator__model-inner.is-visible {
   opacity: 1;
@@ -1367,8 +1373,11 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   display: flex;
   align-items: center;
   gap: 10px;
+  pointer-events: auto;
+  cursor: pointer;
 }
 .c-color-option.is-active {
+  pointer-events: none;
   border-color: #a48e86;
 }
 
