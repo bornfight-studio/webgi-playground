@@ -112,6 +112,8 @@ export default class ModelConfiguratorWrapper {
                         z: 5,
                     };
 
+                    let animation = true;
+
                     this.matchMedia.add("(max-width: 800px)", () => {
                         camPosition = {
                             x: -2.5,
@@ -126,9 +128,11 @@ export default class ModelConfiguratorWrapper {
                             y: 5,
                             z: 15,
                         };
+
+                        animation = false;
                     });
 
-                    this.modelConfigurator.setCameraPosition(camPosition);
+                    this.modelConfigurator.setCameraPosition(camPosition, !animation);
 
                     this.canvasElement.classList.add(this.DOM.states.isVisible);
 

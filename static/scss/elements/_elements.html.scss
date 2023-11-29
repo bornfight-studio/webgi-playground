@@ -5,6 +5,18 @@
     --bg-color: #{$white};
     --fs-b0: 15px;
     --frame-offset: 50px;
+
+    @include mq(lg) {
+        --frame-offset: 40px;
+    }
+
+    @include mq(md) {
+        --frame-offset: 35px;
+    }
+
+    @include mq(sm) {
+        --frame-offset: 15px;
+    }
 }
 
 html,

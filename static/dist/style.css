@@ -781,6 +781,21 @@ input[type=range]::-moz-focus-outer {
   --fs-b0: 15px;
   --frame-offset: 50px;
 }
+@media (max-width: 1140px) {
+  :root {
+    --frame-offset: 40px;
+  }
+}
+@media (max-width: 800px) {
+  :root {
+    --frame-offset: 35px;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --frame-offset: 15px;
+  }
+}
 
 html,
 body {
@@ -1272,9 +1287,12 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   justify-content: flex-end;
   z-index: 2;
   text-align: center;
-  padding: 20px;
-  padding-top: 8.3333333333vw;
-  padding-bottom: 4.8611111111vw;
+  padding: 8.3333333333vw 20px 4.8611111111vw;
+}
+@media (max-width: 1140px) {
+  .c-ring-configurator__heading {
+    padding: 120px 20px 70px;
+  }
 }
 .c-ring-configurator__heading-title {
   font-family: var(--font-secondary);

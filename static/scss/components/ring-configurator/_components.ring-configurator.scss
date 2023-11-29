@@ -174,9 +174,11 @@
         justify-content: flex-end;
         z-index: 2;
         text-align: center;
-        padding: 20px;
-        padding-top: get-vw(120px);
-        padding-bottom: get-vw(70px);
+        padding: get-vw(120px) 20px get-vw(70px);
+
+        @include mq(lg) {
+            padding: 120px 20px 70px;
+        }
 
         &-title {
             font-family: var(--font-secondary);
@@ -244,11 +246,11 @@
         transition: opacity 0.25s linear, transform 1.2s getTransitionEasing("ease-in-out-quad");
         cursor: grab;
 
-        @include mq(md){
+        @include mq(md) {
             transform: scale(0.5) translateY(-40%);
         }
 
-        @include mq(sm){
+        @include mq(sm) {
             transform: scale(0.7) translateY(-30%);
         }
 

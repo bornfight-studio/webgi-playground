@@ -123,7 +123,7 @@ export default class RingConfigurator {
         });
     }
 
-    setCameraPosition(cameraPosition) {
+    setCameraPosition(cameraPosition, noAnimation = false) {
         const camera = this.viewer.scene.activeCamera;
         const position = {
             x: camera.position.x,
@@ -135,7 +135,7 @@ export default class RingConfigurator {
             y: cameraPosition.y,
             z: cameraPosition.z,
             ease: "expo.inOut",
-            duration: 1.2,
+            duration: noAnimation ? 0 : 1.2,
             onStart: () => {
                 camera.setCameraOptions({ controlsEnabled: false });
             },
