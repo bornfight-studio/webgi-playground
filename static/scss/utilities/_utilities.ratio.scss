@@ -34,7 +34,6 @@
     height: 100%;
 }
 
-
 /**
  * Ratio variants.
  * Generate a series of ratio classes to be used like so:
@@ -46,11 +45,11 @@
 @each $ratio in $settings-ratio {
     @each $antecedent, $consequent in $ratio {
         @if (type-of($antecedent) != number) {
-            @error "`#{$antecedent}` needs to be a number."
+            @error "`#{$antecedent}` needs to be a number.";
         }
 
         @if (type-of($consequent) != number) {
-            @error "`#{$consequent}` needs to be a number."
+            @error "`#{$consequent}` needs to be a number.";
         }
 
         .u-ratio--#{$antecedent}\-#{$consequent} {

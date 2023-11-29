@@ -87,7 +87,6 @@ ready(() => {
     const navigation = new NavigationController();
     navigation.init();
 
-
     /**
      * RingConfigurator
      */
