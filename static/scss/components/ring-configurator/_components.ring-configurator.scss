@@ -356,6 +356,16 @@
     height: 17px;
     border-radius: 50%;
 
+    @include mq(md) {
+        width: 14px;
+        height: 14px;
+    }
+
+    @include mq(sm) {
+        width: 10px;
+        height: 10px;
+    }
+
     &--w-gold {
         background-color: #eaeaea;
     }
