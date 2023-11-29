@@ -1145,6 +1145,11 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 .c-ring-configurator__engraving {
   gap: 15px;
 }
+@media (max-width: 800px) {
+  .c-ring-configurator__engraving {
+    gap: 10px;
+  }
+}
 .c-ring-configurator__configurator-inputs {
   position: fixed;
   top: 0;
@@ -1160,6 +1165,16 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   transition: 0.3s;
   pointer-events: none;
 }
+@media (max-width: 800px) {
+  .c-ring-configurator__configurator-inputs {
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .c-ring-configurator__configurator-inputs {
+    padding: 15px;
+  }
+}
 .c-ring-configurator__configurator-inputs.is-visible {
   opacity: 1;
 }
@@ -1168,9 +1183,23 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   width: 100%;
   position: relative;
 }
-@media (max-width: 1440px) {
+@media (max-width: 1140px) {
   .c-ring-configurator__configurator-inputs-inner {
-    height: 110px;
+    height: 100px;
+  }
+}
+@media (max-width: 800px) {
+  .c-ring-configurator__configurator-inputs-inner {
+    height: 90px;
+  }
+}
+@media (max-width: 480px) {
+  .c-ring-configurator__configurator-inputs-inner {
+    height: 70px;
+    transition: height 0.3s ease-out;
+  }
+  .c-ring-configurator__configurator-inputs-inner.active-2 {
+    height: 125px;
   }
 }
 .c-ring-configurator__input-wrapper {
@@ -1183,6 +1212,11 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   visibility: hidden;
   pointer-events: none;
   transition: 0.25s;
+}
+@media (max-width: 480px) {
+  .c-ring-configurator__input-wrapper {
+    flex-wrap: wrap;
+  }
 }
 .c-ring-configurator__input-wrapper.is-active {
   opacity: 1;
@@ -1200,16 +1234,26 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   flex-direction: column;
   justify-content: space-between;
 }
+@media (max-width: 480px) {
+  .c-ring-configurator__input-block {
+    flex: 1 0 auto;
+  }
+}
+@media (max-width: 480px) {
+  .c-ring-configurator__input-block--range {
+    width: 100%;
+  }
+}
 .c-ring-configurator__configurator-inputs-tabs {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 20px;
 }
-.c-ring-configurator__configurator-inputs-tabs li {
-  margin-right: 1.3888888889vw;
-}
-.c-ring-configurator__configurator-inputs-tabs li:last-child {
-  margin-right: 0;
+@media (max-width: 800px) {
+  .c-ring-configurator__configurator-inputs-tabs {
+    gap: 10px;
+  }
 }
 .c-ring-configurator__configurator-inputs-tab {
   text-transform: uppercase;
@@ -1218,6 +1262,12 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   transition: opacity 0.25s;
   pointer-events: auto;
   padding-bottom: 5px;
+}
+@media (max-width: 480px) {
+  .c-ring-configurator__configurator-inputs-tab {
+    padding-bottom: 0;
+    opacity: 0.7;
+  }
 }
 .c-ring-configurator__configurator-inputs-tab:after {
   content: "";
@@ -1259,12 +1309,24 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   display: flex;
   gap: 10px;
 }
+@media (max-width: 480px) {
+  .c-ring-configurator__ring-material ul {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+}
 .c-ring-configurator__gem {
   display: block;
 }
 .c-ring-configurator__gem ul {
   display: flex;
   gap: 10px;
+}
+@media (max-width: 480px) {
+  .c-ring-configurator__gem ul {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
 }
 .c-ring-configurator__frame {
   position: absolute;
@@ -1429,6 +1491,16 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   pointer-events: auto;
   cursor: pointer;
 }
+@media (max-width: 800px) {
+  .c-color-option {
+    padding: 8px 10px;
+  }
+}
+@media (max-width: 480px) {
+  .c-color-option {
+    gap: 6px;
+  }
+}
 .c-color-option.is-active {
   pointer-events: none;
   border-color: #a48e86;
@@ -1477,6 +1549,12 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   padding-top: 7px;
   line-height: 1.7;
 }
+@media (max-width: 480px) {
+  .c-input,
+  .c-select {
+    width: 100%;
+  }
+}
 
 .c-select-wrapper {
   position: relative;
@@ -1506,12 +1584,23 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   align-items: center;
   gap: 5px;
 }
+@media (max-width: 800px) {
+  .c-range-wrapper {
+    gap: 3px;
+    padding: 5px;
+  }
+}
 
 .c-range {
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
   cursor: pointer;
+}
+@media (max-width: 480px) {
+  .c-range {
+    flex: 1 0 auto;
+  }
 }
 .c-range::-moz-range-track {
   background: #dea593;
@@ -1549,6 +1638,11 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   min-width: 35px;
   text-align: right;
   padding-top: 0.1em;
+}
+@media (max-width: 800px) {
+  .c-range-value {
+    min-width: 25px;
+  }
 }
 
 .c-ring-configurator-header {

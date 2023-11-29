@@ -23,6 +23,10 @@
 
     &__engraving {
         gap: 15px;
+
+        @include mq(md) {
+            gap: 10px;
+        }
     }
 
     &__configurator-inputs {
@@ -40,6 +44,14 @@
         transition: 0.3s;
         pointer-events: none;
 
+        @include mq(md) {
+            padding: 20px;
+        }
+
+        @include mq(sm) {
+            padding: 15px;
+        }
+
         &.is-visible {
             opacity: 1;
         }
@@ -50,8 +62,21 @@
         width: 100%;
         position: relative;
 
-        @include mq(xl) {
-            height: 110px;
+        @include mq(lg) {
+            height: 100px;
+        }
+
+        @include mq(md) {
+            height: 90px;
+        }
+
+        @include mq(sm) {
+            height: 70px;
+            transition: height 0.3s ease-out;
+
+            &.active-2 {
+                height: 125px;
+            }
         }
     }
 
@@ -65,6 +90,10 @@
         visibility: hidden;
         pointer-events: none;
         transition: 0.25s;
+
+        @include mq(sm) {
+            flex-wrap: wrap;
+        }
 
         &.is-active {
             opacity: 1;
@@ -84,19 +113,26 @@
         flex-wrap: wrap;
         flex-direction: column;
         justify-content: space-between;
+
+        @include mq(sm) {
+            flex: 1 0 auto;
+        }
+
+        &--range {
+            @include mq(sm) {
+                width: 100%;
+            }
+        }
     }
 
     &__configurator-inputs-tabs {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        gap: 20px;
 
-        li {
-            margin-right: get-vw(20px);
-
-            &:last-child {
-                margin-right: 0;
-            }
+        @include mq(md) {
+            gap: 10px;
         }
     }
 
@@ -107,6 +143,11 @@
         transition: opacity 0.25s;
         pointer-events: auto;
         padding-bottom: 5px;
+
+        @include mq(sm) {
+            padding-bottom: 0;
+            opacity: 0.7;
+        }
 
         &:after {
             content: "";
@@ -140,6 +181,11 @@
         ul {
             display: flex;
             gap: 10px;
+
+            @include mq(sm) {
+                flex-wrap: wrap;
+                gap: 7px;
+            }
         }
     }
 
@@ -149,6 +195,11 @@
         ul {
             display: flex;
             gap: 10px;
+
+            @include mq(sm) {
+                flex-wrap: wrap;
+                gap: 7px;
+            }
         }
     }
 
@@ -285,6 +336,14 @@
     pointer-events: auto;
     cursor: pointer;
 
+    @include mq(md) {
+        padding: 8px 10px;
+    }
+
+    @include mq(sm) {
+        gap: 6px;
+    }
+
     &.is-active {
         pointer-events: none;
         border-color: #a48e86;
@@ -340,6 +399,10 @@
     padding-bottom: 7px;
     padding-top: 7px;
     line-height: 1.7;
+
+    @include mq(sm) {
+        width: 100%;
+    }
 }
 
 .c-select-wrapper {
@@ -370,6 +433,11 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 5px;
+
+    @include mq(md) {
+        gap: 3px;
+        padding: 5px;
+    }
 }
 
 .c-range {
@@ -377,6 +445,10 @@
     appearance: none;
     background: transparent;
     cursor: pointer;
+
+    @include mq(sm) {
+        flex: 1 0 auto;
+    }
 
     &::-moz-range-track {
         background: #dea593;
@@ -419,4 +491,8 @@
     min-width: 35px;
     text-align: right;
     padding-top: 0.1em;
+
+    @include mq(md) {
+        min-width: 25px;
+    }
 }

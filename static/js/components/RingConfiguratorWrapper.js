@@ -28,6 +28,7 @@ export default class ModelConfiguratorWrapper {
             canvas: ".js-ring-configurator-viewer",
             trigger: ".js-ring-configurator-trigger",
             inputWrappers: ".js-ring-configurator-input-wrapper",
+            inputsInner: ".js-ring-configurator-inputs-inner",
             inputWrapperTriggers: ".js-ring-configurator-input-wrapper-tab-trigger",
             inputs: ".js-ring-configurator-inputs",
             close: ".js-ring-configurator-close",
@@ -65,6 +66,7 @@ export default class ModelConfiguratorWrapper {
         this.frameRight = document.querySelector(this.DOM.frame.right);
 
         // configurator
+        this.inputsInner = document.querySelector(this.DOM.inputsInner);
         this.trigger = document.querySelector(this.DOM.trigger);
         this.inputWrappers = document.querySelectorAll(this.DOM.inputWrappers);
         this.inputWrapperTriggers = document.querySelectorAll(this.DOM.inputWrapperTriggers);
@@ -106,33 +108,7 @@ export default class ModelConfiguratorWrapper {
                 if (!this.isLoaded) {
                     this.init();
 
-                    let camPosition = {
-                        x: -2.5,
-                        y: 5,
-                        z: 5,
-                    };
-
-                    let animation = true;
-
-                    this.matchMedia.add("(max-width: 800px)", () => {
-                        camPosition = {
-                            x: -2.5,
-                            y: 5,
-                            z: 9,
-                        };
-                    });
-
-                    this.matchMedia.add("(max-width: 490px)", () => {
-                        camPosition = {
-                            x: -1.5,
-                            y: 5,
-                            z: 15,
-                        };
-
-                        animation = false;
-                    });
-
-                    this.modelConfigurator.setCameraPosition(camPosition, !animation);
+                    this.setInitialCamPosition(true);
 
                     this.canvasElement.classList.add(this.DOM.states.isVisible);
 
@@ -168,6 +144,44 @@ export default class ModelConfiguratorWrapper {
         this.initTimelines();
     }
 
+    setInitialCamPosition(intro = false, faster = false) {
+        let camPosition = {
+            x: -2.5,
+            y: 5,
+            z: 5,
+        };
+
+        let animation = true;
+
+        this.matchMedia.add("(max-width: 1140px)", () => {
+            camPosition = {
+                x: -2.5,
+                y: 5,
+                z: 8,
+            };
+        });
+
+        this.matchMedia.add("(max-width: 800px)", () => {
+            camPosition = {
+                x: -2.5,
+                y: 5,
+                z: 9,
+            };
+        });
+
+        this.matchMedia.add("(max-width: 490px)", () => {
+            camPosition = {
+                x: -1.5,
+                y: 5,
+                z: 15,
+            };
+
+            animation = !intro;
+        });
+
+        this.modelConfigurator.setCameraPosition(camPosition, !animation, faster);
+    }
+
     tabsController() {
         let currentActive = 0;
 
@@ -179,6 +193,9 @@ export default class ModelConfiguratorWrapper {
 
                     this.inputWrapperTriggers[currentActive].classList.remove(this.DOM.states.isActive);
                     this.inputWrapperTriggers[index].classList.add(this.DOM.states.isActive);
+
+                    this.inputsInner.classList.remove(`active-${currentActive + 1}`);
+                    this.inputsInner.classList.add(`active-${index + 1}`);
 
                     currentActive = index;
                 });
@@ -416,6 +433,8 @@ export default class ModelConfiguratorWrapper {
     }
 
     takeScreenshot(fileName) {
+        if (!this.screenshot) return;
+
         const MIME_TYPE = "image/png";
 
         this.screenshot.addEventListener("click", () => {
@@ -459,11 +478,16 @@ export default class ModelConfiguratorWrapper {
         });
 
         this.close.addEventListener("click", () => {
+            this.setInitialCamPosition(false, true);
+
             this.body.classList.remove(this.DOM.states.optionsActive);
             this.inputs.classList.remove(this.DOM.states.isVisible);
-            this.canvasElement.classList.remove(this.DOM.states.isZoomed);
 
             this.outroTl.timeScale(1.5).reverse();
+
+            setTimeout(() => {
+                this.canvasElement.classList.remove(this.DOM.states.isZoomed);
+            }, 300);
         });
     }
 }
