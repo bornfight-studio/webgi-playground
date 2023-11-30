@@ -7,6 +7,12 @@
     text-align: center;
     padding: 20px var(--frame-offset);
 
+    @include mq(sm) {
+        top: 0;
+        padding: 15px var(--frame-offset);
+        line-height: 0;
+    }
+
     &__close {
         @include button-reset;
         font-size: var(--fs-b0);
@@ -23,10 +29,26 @@
         opacity: 0;
         visibility: hidden;
 
+        @include mq(sm) {
+            margin-top: -0.25em;
+            margin-left: -15px;
+            padding: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            span {
+                display: none;
+            }
+        }
+
         .u-icon {
             font-size: 0.75em;
             margin-right: 0.75em;
             transition: all 0.3s;
+
+            @include mq(sm) {
+                font-size: 1em;
+            }
         }
 
         @include hover {
