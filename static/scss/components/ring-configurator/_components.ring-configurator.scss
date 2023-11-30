@@ -54,6 +54,16 @@
 
         &.is-visible {
             opacity: 1;
+
+            &.is-dragging {
+                .c-ring-configurator__configurator-inputs-inner,
+                .c-ring-configurator__configurator-inputs-tabs {
+                    opacity: 0;
+                    pointer-events: none;
+                    transition-delay: 0.1s;
+                    transition-duration: 0.5s;
+                }
+            }
         }
     }
 
@@ -61,6 +71,7 @@
         height: 110px;
         width: 100%;
         position: relative;
+        transition-duration: 0.5s;
 
         @include mq(lg) {
             height: 100px;
@@ -130,6 +141,7 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 20px;
+        transition-duration: 0.5s;
 
         @include mq(md) {
             gap: 10px;

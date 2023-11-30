@@ -1178,10 +1178,18 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
 .c-ring-configurator__configurator-inputs.is-visible {
   opacity: 1;
 }
+.c-ring-configurator__configurator-inputs.is-visible.is-dragging .c-ring-configurator__configurator-inputs-inner,
+.c-ring-configurator__configurator-inputs.is-visible.is-dragging .c-ring-configurator__configurator-inputs-tabs {
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0.1s;
+  transition-duration: 0.5s;
+}
 .c-ring-configurator__configurator-inputs-inner {
   height: 110px;
   width: 100%;
   position: relative;
+  transition-duration: 0.5s;
 }
 @media (max-width: 1140px) {
   .c-ring-configurator__configurator-inputs-inner {
@@ -1249,6 +1257,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   flex-wrap: wrap;
   align-items: center;
   gap: 20px;
+  transition-duration: 0.5s;
 }
 @media (max-width: 800px) {
   .c-ring-configurator__configurator-inputs-tabs {

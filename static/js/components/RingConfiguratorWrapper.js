@@ -1,6 +1,7 @@
 import RingConfigurator from "./RingConfigurator";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import is from "is_js";
 
 gsap.registerPlugin(SplitText);
 
@@ -47,12 +48,15 @@ export default class ModelConfiguratorWrapper {
                 isVisible: "is-visible",
                 optionsActive: "has-options-active",
                 isZoomed: "is-zoomed",
+                isDragging: "is-dragging",
             },
         };
 
         // general
         this.body = document.body;
         this.isLoaded = false;
+        this.isMousePressed = false;
+        this.isDragging = false;
 
         // UI
         this.logo = document.querySelector(this.DOM.logo);
@@ -139,9 +143,52 @@ export default class ModelConfiguratorWrapper {
             this.configuratorToggler();
             this.engravingController();
             this.tabsController();
+            this.showHideOnDrag();
         }
 
         this.initTimelines();
+    }
+
+    showHideOnDrag() {
+        if (is.not.touchDevice()) {
+            this.modelConfigurator.element.addEventListener("mousedown", () => {
+                this.isMousePressed = true;
+            });
+
+            this.modelConfigurator.element.addEventListener("mouseup", () => {
+                this.isMousePressed = false;
+                this.isDragging = false;
+                this.inputs.classList.remove(this.DOM.states.isDragging);
+            });
+
+            this.modelConfigurator.element.addEventListener("mousemove", () => {
+                if (this.isMousePressed) {
+                    if (!this.isDragging) {
+                        this.isDragging = true;
+                        this.inputs.classList.add(this.DOM.states.isDragging);
+                    }
+                }
+            });
+        } else {
+            this.modelConfigurator.element.addEventListener("touchstart", () => {
+                this.isMousePressed = true;
+            });
+
+            this.modelConfigurator.element.addEventListener("touchend", () => {
+                this.isMousePressed = false;
+                this.isDragging = false;
+                this.inputs.classList.remove(this.DOM.states.isDragging);
+            });
+
+            this.modelConfigurator.element.addEventListener("touchmove", () => {
+                if (this.isMousePressed) {
+                    if (!this.isDragging) {
+                        this.isDragging = true;
+                        this.inputs.classList.add(this.DOM.states.isDragging);
+                    }
+                }
+            });
+        }
     }
 
     setInitialCamPosition(intro = false, faster = false) {
