@@ -65,6 +65,8 @@ export default class RingConfigurator {
             });
 
             this.importer.addEventListener("onLoad", (ev) => {
+                this.viewer.renderManager.displayCanvasScaling = 1.5;
+
                 setTimeout(() => {
                     this.afterInit();
                 }, 100);
@@ -82,11 +84,11 @@ export default class RingConfigurator {
     afterInit() {
         const camera = this.viewer.scene.activeCamera;
         const controls = camera.controls;
-        controls.minDistance = 2.5;
+        controls.minDistance = 2.2;
         controls.maxDistance = 20;
         controls.minZoom = 0;
         controls.maxZoom = 0;
-        controls.minPolarAngle = 0.3;
+        controls.minPolarAngle = 0.2;
         controls.maxPolarAngle = 1.6;
     }
 
