@@ -98,7 +98,7 @@ export default class RingConfigurator {
 
         objects.forEach((objectName) => {
             this.viewer.scene.traverse((child) => {
-                if (child.isMesh && child.name === objectName) {
+                if (child.isMesh && child.name.includes(objectName)) {
                     child.material.color.set(baseColor);
                     child.setDirty?.();
                 }

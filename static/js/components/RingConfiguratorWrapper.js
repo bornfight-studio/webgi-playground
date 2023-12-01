@@ -105,7 +105,7 @@ export default class ModelConfiguratorWrapper {
         // configurator
         this.modelConfigurator = new RingConfigurator({
             elementClass: this.DOM.canvas,
-            modelUrl: "../static/models/pixotronics-bfs-v3.glb",
+            modelUrl: "../static/models/pixotronics-bfs-v4.glb",
             ringOptions: window.ringOptions,
             mouseAnimation: false,
             onLoad: () => {
@@ -193,34 +193,26 @@ export default class ModelConfiguratorWrapper {
 
     setInitialCamPosition(intro = false, faster = false) {
         let camPosition = {
-            x: -2.5,
-            y: 5,
-            z: 5,
+            x: 5.7,
+            y: 3.28,
+            z: -0.83,
         };
 
         let animation = true;
 
-        this.matchMedia.add("(max-width: 1140px)", () => {
-            camPosition = {
-                x: -2.5,
-                y: 5,
-                z: 8,
-            };
-        });
-
         this.matchMedia.add("(max-width: 800px)", () => {
             camPosition = {
-                x: -2.5,
-                y: 5,
-                z: 9,
+                x: 5.7,
+                y: 3.28,
+                z: -2.83,
             };
         });
 
         this.matchMedia.add("(max-width: 490px)", () => {
             camPosition = {
-                x: -1.5,
-                y: 5,
-                z: 15,
+                x: 14.44,
+                y: 4.62,
+                z: -8.6,
             };
 
             animation = !intro;
@@ -423,6 +415,8 @@ export default class ModelConfiguratorWrapper {
         let text = this.engravingText.value;
         let font = this.engravingFont.value;
         let size = this.engravingSize.value;
+
+        this.modelConfigurator.setEngravingText(engravingObject, text, font, size);
 
         this.engravingText.addEventListener("input", (ev) => {
             text = ev.target.value;
