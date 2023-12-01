@@ -105,7 +105,7 @@ export default class ModelConfiguratorWrapper {
         // configurator
         this.modelConfigurator = new RingConfigurator({
             elementClass: this.DOM.canvas,
-            modelUrl: "../static/models/pixotronics-bfs-v4.glb",
+            modelUrl: "../static/models/pixotronics-bfs-v5.glb",
             ringOptions: window.ringOptions,
             mouseAnimation: false,
             onLoad: () => {
@@ -193,26 +193,26 @@ export default class ModelConfiguratorWrapper {
 
     setInitialCamPosition(intro = false, faster = false) {
         let camPosition = {
-            x: 5.7,
-            y: 3.28,
-            z: -0.83,
+            x: 5.28,
+            y: 2.87,
+            z: 6.05,
         };
 
         let animation = true;
 
         this.matchMedia.add("(max-width: 800px)", () => {
             camPosition = {
-                x: 5.7,
-                y: 3.28,
-                z: -2.83,
+                x: 6.98,
+                y: 5.71,
+                z: 8.10,
             };
         });
 
         this.matchMedia.add("(max-width: 490px)", () => {
             camPosition = {
-                x: 14.44,
-                y: 4.62,
-                z: -8.6,
+                x: 9.88,
+                y: 8.09,
+                z: 11.44,
             };
 
             animation = !intro;
