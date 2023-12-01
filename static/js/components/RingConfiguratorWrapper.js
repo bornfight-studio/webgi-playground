@@ -204,7 +204,7 @@ export default class ModelConfiguratorWrapper {
             camPosition = {
                 x: 6.98,
                 y: 5.71,
-                z: 8.10,
+                z: 8.1,
             };
         });
 
