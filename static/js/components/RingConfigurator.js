@@ -38,7 +38,7 @@ export default class RingConfigurator {
             $this.viewer = new ViewerApp({
                 canvas: $this.element,
                 useRgbm: true,
-                isAntialiased: true,
+                isAntialiased: false,
                 useGBufferDepth: false,
             });
 
