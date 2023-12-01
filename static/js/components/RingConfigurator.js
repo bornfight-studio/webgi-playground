@@ -39,7 +39,7 @@ export default class RingConfigurator {
                 canvas: $this.element,
                 useRgbm: true,
                 isAntialiased: true,
-                useGBufferDepth: true,
+                useGBufferDepth: false,
             });
 
             $this.viewer.renderManager.displayCanvasScaling = 1;
