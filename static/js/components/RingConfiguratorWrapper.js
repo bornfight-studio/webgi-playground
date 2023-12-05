@@ -97,8 +97,12 @@ export default class ModelConfiguratorWrapper {
         this.outroTl = gsap.timeline({
             delay: 0,
             paused: true,
-            onComplete: () => {
+            onStart: () => {
                 this.body.classList.add(this.DOM.states.optionsActive);
+                this.modelConfigurator.autoRotate(false);
+            },
+            onReverseComplete: () => {
+                this.modelConfigurator.autoRotate(true);
             },
         });
 

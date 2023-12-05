@@ -85,13 +85,14 @@ export default class RingConfigurator {
      */
     afterInit() {
         const camera = this.viewer.scene.activeCamera;
-        const controls = camera.controls;
-        controls.minDistance = 2.2;
-        controls.maxDistance = 20;
-        controls.minZoom = 0;
-        controls.maxZoom = 0;
-        controls.minPolarAngle = 0.2;
-        controls.maxPolarAngle = 1.6;
+        this.controls = camera.controls;
+        this.controls.minDistance = 2.2;
+        this.controls.maxDistance = 20;
+        this.controls.minZoom = 0;
+        this.controls.maxZoom = 0;
+        this.controls.minPolarAngle = 0.2;
+        this.controls.maxPolarAngle = 1.6;
+        this.controls.autoRotate = true;
     }
 
     /**
@@ -109,6 +110,10 @@ export default class RingConfigurator {
                 }
             });
         });
+    }
+
+    autoRotate(value) {
+        this.controls.autoRotate = value;
     }
 
     setEngravingText(modelObjects, text, fontFamily = "Inter", fontSize = 100) {
