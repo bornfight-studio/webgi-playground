@@ -4,74 +4,63 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home</title>
+        <title>Bornfight Studio - WEBGi playground</title>
         <link href="static/dist/style.css" rel="stylesheet" />
         <script src="static/dist/vendor.js" defer></script>
         <script src="static/dist/bundle.js" defer></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="static/ui/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="static/ui/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="static/ui/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="static/ui/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="static/ui/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
     </head>
     <body>
-        <!-- LOADER -->
-        <div class="o-loader js-loader">
-            <div class="o-container">
-                <div class="c-loader">loader</div>
-            </div>
-        </div>
-        <!-- end LOADER -->
-        <!-- NAVIGATION -->
-        <nav class="o-navigation js-navigation">
-            <div class="o-container">
-                <div class="c-navigation">navigation</div>
-            </div>
-        </nav>
-        <!-- end NAVIGATION -->
-        <!-- MOBILE NAVIGATION -->
-        <nav class="o-mobile-navigation js-mobile-navigation">
-            <div class="o-container">
-                <div class="c-mobile-navigation">mobile navigation</div>
-            </div>
-        </nav>
-        <!-- end MOBILE NAVIGATION -->
         <!-- PAGE WRAPPER -->
-        <div id="home" class="o-page o-page--home">
-            <!-- HEADER -->
-            <header class="o-header">
-                <div class="o-container">
-                    <div class="c-header">header</div>
-                </div>
-            </header>
-            <!-- end HEADER -->
+        <div id="home" class="o-page o-page--home c-home">
+            <div class="c-home__bfs">
+                <a href="https://www.bornfight.studio/" target="_blank" rel="noreferrer"><img src="static/ui/bfs.svg" /></a>
+            </div>
             <!-- PAGE CONTENT -->
             <main class="o-page__inner o-page__inner--home">
-                <!-- SECTION -->
+                <!-- LIST -->
                 <section class="o-section">
                     <div class="o-container">
-                        <div class="c-section-component-name">home section</div>
+                        <div class="c-home__list">
+                            <h2 class="u-a1">EXAMPLES:</h2>
+
+                            <ul class="u-b1">
+                                <li>
+                                    <a href="">Ring Configurator</a>
+                                </li>
+                                <li>
+                                    <a href="">Ring Configurator</a>
+                                </li>
+                                <li>
+                                    <a href="">Ring Configurator</a>
+                                </li>
+                                <li>
+                                    <a href="">Ring Configurator</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </section>
-                <!-- end SECTION -->
-                <!-- MODULE -->
-                <section class="o-section">
-                    <div class="o-container">
-                        <div class="c-module-name-module">module</div>
-                    </div>
-                </section>
-                <!-- end MODULE -->
+                <!-- end LIST -->
             </main>
             <!-- end PAGE CONTENT -->
             <!-- FOOTER -->
-            <footer class="o-footer js-footer">
+            <footer class="c-home__footer">
                 <div class="o-container">
-                    <div class="c-footer">footer</div>
+                    <div class="c-footer">
+                        <p class="c-footer__text u-b3">
+                            © 2023, <a href="https://www.bornfight.studio/" target="_blank" rel="noreferrer">Bornfight Studio</a>
+                        </p>
+                    </div>
                 </div>
             </footer>
             <!-- end FOOTER -->
-            <!-- COOKIE MESSAGE -->
-            <div class="o-cookie-message js-cookie-message">
-                <div class="o-container">
-                    <div class="c-cookie-message">cookie message</div>
-                </div>
-            </div>
-            <!-- end COOKIE MESSAGE -->
         </div>
         <!-- end PAGE WRAPPER -->
     </body>

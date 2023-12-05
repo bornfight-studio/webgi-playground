@@ -1,0 +1,76 @@
+.c-home {
+    @include fluidValue("padding", "s-40");
+    background-color: #121212;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    @include mq(md) {
+        padding: 15px;
+    }
+
+    &__bfs {
+        @include fluidValue("width", null, 250px);
+        @include fluidValue("padding-bottom", "s-96");
+        display: block;
+    }
+
+    &__list {
+        ul {
+            @include fluidValue("padding-top", "s-12");
+            @include fluidValue("padding-left", "s-12");
+        }
+
+        li {
+            @include fluidValue("padding-bottom", "s-8");
+        }
+
+        a {
+            @include fluidValue("padding-left", "s-24");
+            @include fluidValue("padding-top", "s-4");
+            @include fluidValue("padding-bottom", "s-4");
+            @include fluidValue("padding-right", "s-8");
+            position: relative;
+            display: inline-block;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translate(0%, -50%);
+                left: 0;
+                width: 14px;
+                height: 4px;
+                background-color: #fff;
+                border-radius: 1000px;
+                transition: width 0.2s 0.2s ease-out, height 0.2s 0.2s ease-out, transform 0.2s ease-out;
+                mix-blend-mode: difference;
+            }
+
+            @include hover {
+                &:before {
+                    width: 4px;
+                    height: 14px;
+                    transform: translate(350%, -50%);
+                    transition: width 0.2s ease-out, height 0.2s ease-out, transform 0.2s 0.2s ease-out;
+                }
+            }
+        }
+    }
+
+    &__footer {
+        @include fluidValue("padding-top", "s-96");
+        margin-top: auto;
+        text-align: right;
+
+        a {
+            opacity: 0.5;
+            transition: opacity 0.3s;
+
+            @include hover {
+                opacity: 1;
+            }
+        }
+    }
+}
