@@ -1,4 +1,4 @@
-import { ViewerApp, AssetManagerPlugin, addBasePlugins, SimpleTextPlugin } from "webgi";
+import { ViewerApp, AssetManagerPlugin, addBasePlugins, SimpleTextPlugin, TonemapPlugin } from "webgi";
 import gsap from "gsap";
 
 export default class RingConfigurator {
@@ -42,7 +42,7 @@ export default class RingConfigurator {
                 useGBufferDepth: false,
             });
 
-            $this.viewer.renderManager.displayCanvasScaling = 1;
+            $this.viewer.renderManager.displayCanvasScaling = 1.5;
 
             $this.manager = await $this.viewer.addPlugin(AssetManagerPlugin);
             $this.text = await $this.viewer.addPlugin(SimpleTextPlugin);
@@ -58,7 +58,9 @@ export default class RingConfigurator {
         }
 
         setupViewer().then((r) => {
-            this.manager.addFromPath(this.defaults.modelUrl).then((r) => {});
+            this.manager.addFromPath(this.defaults.modelUrl).then(() => {
+                this.viewer.getPlugin(TonemapPlugin).config.clipBackground = true;
+            });
 
             this.importer.addEventListener("onProgress", (ev) => {
                 this.onProgress((ev.loaded / ev.total) * 100);
@@ -103,7 +105,7 @@ export default class RingConfigurator {
             this.viewer.scene.traverse((child) => {
                 if (child.isMesh && child.name.includes(objectName)) {
                     child.material.color.set(baseColor);
-                    child.setDirty?.();
+                    child.material.setDirty?.();
                 }
             });
         });

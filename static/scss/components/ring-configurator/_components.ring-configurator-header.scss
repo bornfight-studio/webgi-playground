@@ -1,4 +1,9 @@
 .c-ring-configurator-header {
+    --text-color: #521400;
+    --bg-color: #f3f1ed;
+    --font-primary: #{$pp-fragment};
+    --font-secondary: #{$ot-jubilee};
+
     position: fixed;
     top: 15px;
     left: 0;
@@ -28,6 +33,7 @@
         padding-right: 0.5em;
         opacity: 0;
         visibility: hidden;
+        color: var(--text-color);
 
         @include mq(sm) {
             margin-top: -0.25em;

@@ -105,7 +105,7 @@ export default class ModelConfiguratorWrapper {
         // configurator
         this.modelConfigurator = new RingConfigurator({
             elementClass: this.DOM.canvas,
-            modelUrl: "../static/models/pixotronics-bfs-v5.glb",
+            modelUrl: "../static/models/pixotronics-bfs-v6.glb",
             ringOptions: window.ringOptions,
             mouseAnimation: false,
             onLoad: () => {
