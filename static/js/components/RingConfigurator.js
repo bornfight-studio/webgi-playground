@@ -134,11 +134,13 @@ export default class RingConfigurator {
 
     setCameraPosition(cameraPosition, noAnimation = false, faster = false) {
         const camera = this.viewer.scene.activeCamera;
+
         const position = {
             x: camera.position.x,
             y: camera.position.y,
             z: camera.position.z,
         };
+
         gsap.to(position, {
             x: cameraPosition.x,
             y: cameraPosition.y,

@@ -211,15 +211,15 @@ export default class ModelConfiguratorWrapper {
             camPosition = {
                 x: 6.98,
                 y: 5.71,
-                z: 8.1,
+                z: 6,
             };
         });
 
         this.matchMedia.add("(max-width: 490px)", () => {
             camPosition = {
-                x: 9.88,
-                y: 8.09,
-                z: 11.44,
+                x: 8,
+                y: 7,
+                z: 5,
             };
 
             animation = !intro;
@@ -505,17 +505,23 @@ export default class ModelConfiguratorWrapper {
             scene.addEventListener("click", (ev) => {
                 this.setActiveClass(ev, this.scenes);
 
-                let cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraPosition);
+                if (ev.currentTarget.dataset?.cameraPosition) {
+                    let cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraPosition);
 
-                this.matchMedia.add("(max-width: 800px)", () => {
-                    cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraTabletPosition);
-                });
+                    this.matchMedia.add("(max-width: 1040px)", () => {
+                        if (ev.currentTarget.dataset.cameraIpadPosition) cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraIpadPosition);
+                    });
 
-                this.matchMedia.add("(max-width: 490px)", () => {
-                    cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraMobilePosition);
-                });
+                    this.matchMedia.add("(max-width: 800px)", () => {
+                        if (ev.currentTarget.dataset.cameraTabletPosition) cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraTabletPosition);
+                    });
 
-                this.modelConfigurator.setCameraPosition(cameraPosition);
+                    this.matchMedia.add("(max-width: 490px)", () => {
+                        if (ev.currentTarget.dataset.cameraMobilePosition) cameraPosition = JSON.parse(ev.currentTarget.dataset.cameraMobilePosition);
+                    });
+
+                    this.modelConfigurator.setCameraPosition(cameraPosition);
+                }
             });
         });
     }
