@@ -12,6 +12,10 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
+
+    .u-b3 {
+        font-family: var(--font-primary);
+    }
 }
 
 .c-ring-configurator {
@@ -154,6 +158,7 @@
         opacity: 0.5;
         transition: opacity 0.25s;
         pointer-events: auto;
+        font-size: 15px;
         padding-bottom: 5px;
         color: var(--text-color);
 
@@ -301,7 +306,8 @@
         color: var(--text-color);
 
         @include hover {
-            background-color: var(--bg-color);
+            background-color: $white;
+            border-color: $white;
         }
     }
 

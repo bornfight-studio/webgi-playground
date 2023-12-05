@@ -1138,6 +1138,9 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   position: relative;
   z-index: 1;
 }
+#c-ring-configurator .u-b3 {
+  font-family: var(--font-primary);
+}
 
 .c-ring-configurator__actions, .c-ring-configurator__gem, .c-ring-configurator__engraving {
   opacity: 0;
@@ -1270,6 +1273,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   opacity: 0.5;
   transition: opacity 0.25s;
   pointer-events: auto;
+  font-size: 15px;
   padding-bottom: 5px;
   color: var(--text-color);
 }
@@ -1450,13 +1454,15 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   }
   .c-ring-configurator__button:active {
     /* 1 */
-    background-color: var(--bg-color);
+    background-color: #ffffff;
+    border-color: #ffffff;
   }
 }
 @media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .c-ring-configurator__button:hover {
     /* 2 */
-    background-color: var(--bg-color);
+    background-color: #ffffff;
+    border-color: #ffffff;
   }
 }
 .c-ring-configurator__model-inner {
