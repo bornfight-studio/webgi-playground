@@ -86,13 +86,12 @@ export default class RingConfigurator {
     afterInit() {
         const camera = this.viewer.scene.activeCamera;
         this.controls = camera.controls;
-        this.controls.minDistance = 2.2;
-        this.controls.maxDistance = 20;
+        this.controls.minDistance = 1;
+        this.controls.maxDistance = 15;
         this.controls.minZoom = 0;
         this.controls.maxZoom = 0;
         this.controls.minPolarAngle = 0.2;
         this.controls.maxPolarAngle = 1.6;
-        this.controls.autoRotate = true;
     }
 
     /**

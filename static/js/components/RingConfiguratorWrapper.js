@@ -100,6 +100,7 @@ export default class ModelConfiguratorWrapper {
             onStart: () => {
                 this.body.classList.add(this.DOM.states.optionsActive);
                 this.modelConfigurator.autoRotate(false);
+                this.setInitialCamPosition(false, true);
             },
             onReverseComplete: () => {
                 this.modelConfigurator.autoRotate(true);
@@ -109,11 +110,13 @@ export default class ModelConfiguratorWrapper {
         // configurator
         this.modelConfigurator = new RingConfigurator({
             elementClass: this.DOM.canvas,
-            modelUrl: "../static/models/pixotronics-bfs-v6.glb",
+            modelUrl: "../static/models/pixotronics-bfs-v7.glb",
             ringOptions: window.ringOptions,
             mouseAnimation: false,
             onLoad: () => {
                 if (!this.isLoaded) {
+                    this.modelConfigurator.autoRotate(true);
+
                     this.init();
 
                     this.setInitialCamPosition(true);
@@ -197,9 +200,9 @@ export default class ModelConfiguratorWrapper {
 
     setInitialCamPosition(intro = false, faster = false) {
         let camPosition = {
-            x: 5.28,
-            y: 2.87,
-            z: 6.05,
+            x: 5.32,
+            y: 6.32,
+            z: 4.48,
         };
 
         let animation = true;
