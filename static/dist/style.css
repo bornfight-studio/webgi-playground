@@ -1083,6 +1083,7 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   width: 250px;
   padding-bottom: clamp(4rem, 3.33vw + 3rem, 6rem);
   display: block;
+  max-width: 100%;
 }
 .c-home__list ul {
   padding-top: clamp(0.5rem, 0.42vw + 0.38rem, 0.75rem);
