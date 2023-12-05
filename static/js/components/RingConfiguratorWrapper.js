@@ -538,6 +538,7 @@ export default class ModelConfiguratorWrapper {
             this.outroTl.timeScale(1.5).reverse();
 
             setTimeout(() => {
+                this.inputWrapperTriggers[0]?.click();
                 this.canvasElement.classList.remove(this.DOM.states.isZoomed);
             }, 300);
         });
