@@ -217,9 +217,9 @@ export default class ModelConfiguratorWrapper {
 
         this.matchMedia.add("(max-width: 490px)", () => {
             camPosition = {
-                x: 8,
-                y: 7,
-                z: 5,
+                x: 10.32,
+                y: 9.32,
+                z: 5.48,
             };
         });
 
