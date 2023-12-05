@@ -205,7 +205,7 @@ export default class ModelConfiguratorWrapper {
             z: 4.48,
         };
 
-        let animation = true;
+        let animation = !intro;
 
         this.matchMedia.add("(max-width: 800px)", () => {
             camPosition = {
@@ -221,8 +221,6 @@ export default class ModelConfiguratorWrapper {
                 y: 7,
                 z: 5,
             };
-
-            animation = !intro;
         });
 
         this.modelConfigurator.setCameraPosition(camPosition, !animation, faster);
