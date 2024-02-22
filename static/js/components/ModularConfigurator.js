@@ -98,12 +98,6 @@ export default class ModularConfigurator {
     }
 
     inputController() {
-        this.viewer.scene.traverse((child) => {
-            if (child.isMesh) {
-                console.log(child.name);
-            }
-        });
-
         if (this.roofInput) {
             this.roofInput.addEventListener("input", (ev) => {
                 this.colorChange("roof", ev.target.value);

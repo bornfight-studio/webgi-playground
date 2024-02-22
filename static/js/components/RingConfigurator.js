@@ -7,7 +7,6 @@ export default class RingConfigurator {
             elementClass: "",
             modelUrl: "",
             envUrl: "",
-            mouseAnimation: false,
             onLoad: () => {},
             onProgress: () => {},
         };
