@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>WebGi playground — Modular Living Configurator</title>
+        <link rel="stylesheet" href="../static/dist/style.css" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../static/ui/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../static/ui/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="../static/ui/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="../static/ui/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="../static/ui/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+    </head>
+    <body>
+        <div class="c-modular-configurator">
+            <div class="c-modular-configurator__model">
+                <canvas
+                    class="js-modular-configurator-viewer c-modular-configurator__model-inner"
+                    style="width: 100%; height: 100%; display: block"
+                ></canvas>
+            </div>
+
+            <div class="c-modular-configurator__configurator-inputs js-modular-configurator-inputs"></div>
+        </div>
+
+        <script type="text/javascript" src="../static/dist/vendor.js"></script>
+        <script type="text/javascript" src="../static/dist/bundle.js"></script>
+    </body>
+</html>

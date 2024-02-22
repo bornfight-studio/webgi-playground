@@ -13,6 +13,7 @@ import GridHelper from "./helpers/GridHelper";
 import NavigationController from "./components/NavigationController";
 import TemplateComponent from "./components/TemplateComponent";
 import RingConfiguratorWrapper from "./components/RingConfiguratorWrapper";
+import ModularConfiguratorWrapper from "./components/ModularConfiguratorWrapper";
 
 /**
  * Check if document is ready cross-browser
@@ -91,4 +92,6 @@ ready(() => {
      * RingConfigurator
      */
     new RingConfiguratorWrapper();
+
+    new ModularConfiguratorWrapper();
 });
