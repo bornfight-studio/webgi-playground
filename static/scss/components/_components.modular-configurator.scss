@@ -1,0 +1,48 @@
+.c-modular-configurator {
+    &__configurator-inputs {
+        @include fluidValue("padding-top", "s-24");
+        @include fluidValue("padding-bottom", "s-24");
+        @include fluidValue("padding-left", "s-32");
+        @include fluidValue("padding-right", "s-32");
+        @include fluidValue("gap", "s-24");
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        background-color: rgba(#fff, 0.1);
+    }
+
+    fieldset {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    label {
+        opacity: 0.8;
+    }
+
+    input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 40px;
+        height: 20px;
+        cursor: pointer;
+        border-radius: 100px;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+        border: none;
+    }
+}

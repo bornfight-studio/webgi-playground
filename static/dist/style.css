@@ -1163,6 +1163,48 @@ a:active:not(:disabled):focus-visible, a:focus:not(:disabled):focus-visible {
   }
 }
 
+.c-modular-configurator__configurator-inputs {
+  padding-top: clamp(1rem, 0.83vw + 0.75rem, 1.5rem);
+  padding-bottom: clamp(1rem, 0.83vw + 0.75rem, 1.5rem);
+  padding-left: clamp(1.25rem, 1.25vw + 0.88rem, 2rem);
+  padding-right: clamp(1.25rem, 1.25vw + 0.88rem, 2rem);
+  gap: clamp(1rem, 0.83vw + 0.75rem, 1.5rem);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.c-modular-configurator fieldset {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.c-modular-configurator label {
+  opacity: 0.8;
+}
+.c-modular-configurator input[type=color] {
+  -webkit-appearance: none;
+  border: none;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 100px;
+  overflow: hidden;
+  padding: 0;
+}
+.c-modular-configurator input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.c-modular-configurator input[type=color]::-webkit-color-swatch {
+  border: none;
+}
+
 /**
  * Examples
  * Ring configurator

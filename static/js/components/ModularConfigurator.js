@@ -18,9 +18,14 @@ export default class ModularConfigurator {
             modelUrl: "",
         };
 
+        this.elements = {
+            roofInput: ".js-modular-configurator-roof-color",
+            frameInput: ".js-modular-configurator-frame-color",
+            poolInput: ".js-modular-configurator-pool-area-color",
+        };
+
         this.defaults = Object.assign({}, _defaults, options);
 
-        console.log(this.defaults.modelUrl);
         this.body = document.body;
 
         this.element = document.querySelector(this.defaults.elementClass);
@@ -30,6 +35,10 @@ export default class ModularConfigurator {
         if (history.scrollRestoration) {
             history.scrollRestoration = "manual";
         }
+
+        this.roofInput = document.querySelector(this.elements.roofInput);
+        this.frameInput = document.querySelector(this.elements.frameInput);
+        this.poolInput = document.querySelector(this.elements.poolInput);
 
         this.init();
     }
@@ -42,15 +51,15 @@ export default class ModularConfigurator {
 
         async function setupViewer() {
             $this.viewer = new ViewerApp({
-                // caching: true,
+                caching: true,
                 canvas: $this.element,
-                // useRgbm: true,
-                // isAntialiased: false,
-                // useGBufferDepth: false,
+                useRgbm: true,
+                isAntialiased: false,
+                useGBufferDepth: false,
             });
 
             // $this.viewer.renderManager.displayCanvasScaling = Math.min(2, window.devicePixelRatio) * 1.25;
-            // $this.viewer.renderManager.displayCanvasScaling = 1.5;
+            $this.viewer.renderManager.displayCanvasScaling = 1.5;
 
             $this.manager = await $this.viewer.addPlugin(AssetManagerPlugin);
 
@@ -84,5 +93,42 @@ export default class ModularConfigurator {
         controls.maxZoom = 0;
         controls.minPolarAngle = 0.2;
         controls.maxPolarAngle = 1.6;
+
+        this.inputController();
+    }
+
+    inputController() {
+        this.viewer.scene.traverse((child) => {
+            if (child.isMesh) {
+                console.log(child.name);
+            }
+        });
+
+        if (this.roofInput) {
+            this.roofInput.addEventListener("input", (ev) => {
+                this.colorChange("roof", ev.target.value);
+            });
+        }
+
+        if (this.frameInput) {
+            this.frameInput.addEventListener("input", (ev) => {
+                this.colorChange("frame", ev.target.value);
+            });
+        }
+
+        if (this.poolInput) {
+            this.poolInput.addEventListener("input", (ev) => {
+                this.colorChange("pool_surround", ev.target.value);
+            });
+        }
+    }
+
+    colorChange(string, value) {
+        this.viewer.scene.traverse((child) => {
+            if (child.isMesh && child.name.includes(string)) {
+                child.material.color.set(value);
+                child.material.setDirty?.();
+            }
+        });
     }
 }
