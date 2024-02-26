@@ -1,35 +1,56 @@
-/*!**********************************!*\
-  !*** ./node_modules/is_js/is.js ***!
-  \**********************************/
+/*!
+ * GSAP 3.12.2
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
 
-/*!************************************!*\
-  !*** ./node_modules/gsap/index.js ***!
-  \************************************/
+/*!
+ * Observer 3.12.2
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
 
-/*!***************************************!*\
-  !*** ./node_modules/gsap/Observer.js ***!
-  \***************************************/
+/*!
+ * ScrollTrigger 3.12.2
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
 
-/*!****************************************!*\
-  !*** ./node_modules/gsap/CSSPlugin.js ***!
-  \****************************************/
+/*!
+ * SplitText: 3.12.2
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
 
-/*!****************************************!*\
-  !*** ./node_modules/gsap/SplitText.js ***!
-  \****************************************/
+/*!
+ * is.js 0.8.0
+ * Author: Aras Atasaygin
+ */
 
-/*!****************************************!*\
-  !*** ./node_modules/gsap/gsap-core.js ***!
-  \****************************************/
+/*!
+ * strings: 3.12.2
+ * https://greensock.com
+ *
+ * Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
 
-/*!********************************************!*\
-  !*** ./node_modules/gsap/ScrollTrigger.js ***!
-  \********************************************/
-
-/*!********************************************!*\
-  !*** ./node_modules/gsap/utils/strings.js ***!
-  \********************************************/
-
-/*!**************************************************************!*\
-  !*** ./node_modules/webgi/dist/examples/runtime/bundle.m.js ***!
-  \**************************************************************/
+/*! For license information please see bundle.m.js.LICENSE.txt */
